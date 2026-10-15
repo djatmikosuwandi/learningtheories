@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html lang="id" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modul Interaktif: Teori Belajar Kognitif & Sosial Kognitif dalam EdTech</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter & Fira Code -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- MathJax for TeX LaTeX Math Rendering -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .font-mono-code {
+            font-family: 'Fira Code', monospace;
+        }
+
+        /* 3D Card Flip Perspective */
+        .perspective-1000 {
+            perspective: 1000px;
+        }
+        .transform-style-3d {
+            transform-style: preserve-3d;
+        }
+        .backface-hidden {
+            backface-visibility: hidden;
+        }
+        .rotate-y-180 {
+            transform: rotateY(180deg);
+        }
+
+        /* Custom Scrollbars */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 8px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 8px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        /* Audio Wave Pulse Animation */
+        @keyframes wavePulse {
+            0%, 100% { height: 6px; }
+            50% { height: 22px; }
+        }
+        .animate-wave-bar-1 { animation: wavePulse 0.8s ease-in-out infinite 0.1s; }
+        .animate-wave-bar-2 { animation: wavePulse 0.8s ease-in-out infinite 0.3s; }
+        .animate-wave-bar-3 { animation: wavePulse 0.8s ease-in-out infinite 0.2s; }
+        .animate-wave-bar-4 { animation: wavePulse 0.8s ease-in-out infinite 0.4s; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-full flex flex-col">
+
+    <!-- Top Navigation Header -->
+    <header class="bg-indigo-950 text-white sticky top-0 z-30 shadow-md border-b border-indigo-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <!-- Brand & Module Identity -->
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center text-white shadow-lg shadow-indigo-500/30 font-bold text-lg">
+                    <i class="fa-solid fa-brain"></i>
+                </div>
+                <div>
+                    <h1 class="font-bold text-base sm:text-lg text-white leading-tight">Teori Belajar & Pembelajaran</h1>
+                    <p class="text-[11px] text-indigo-300 font-medium">Modul EdTech: Kognitif & Sosial Kognitif</p>
+                </div>
+            </div>
+
+            <!-- Reading & Score Badges -->
+            <div class="flex items-center space-x-3">
+                <div class="hidden md:flex items-center space-x-2 bg-indigo-900/80 text-indigo-200 px-3 py-1.5 rounded-full text-xs font-medium border border-indigo-700">
+                    <i class="fa-regular fa-clock text-amber-400"></i>
+                    <span>Estimasi: 12 Menit</span>
+                </div>
+                <div class="flex items-center space-x-2 bg-emerald-500/20 text-emerald-300 px-3.5 py-1.5 rounded-full text-xs font-semibold border border-emerald-500/30">
+                    <i class="fa-solid fa-award text-emerald-400"></i>
+                    <span id="scoreBadge">Skor Modul: 0 Pts</span>
+                </div>
+            </div>
+        </div>
+        <!-- Progress Bar Line -->
+        <div class="w-full bg-indigo-950 h-1">
+            <div id="moduleProgressBar" class="bg-indigo-400 h-1 w-1/6 transition-all duration-300"></div>
+        </div>
+    </header>
+
+    <!-- Main Workspace Container -->
+    <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
+
+        <!-- Module Information Banner -->
+        <div class="bg-gradient-to-r from-indigo-900 via-indigo-800 to-slate-900 text-white rounded-2xl p-6 sm:p-8 mb-6 shadow-xl relative overflow-hidden border border-indigo-700/50">
+            <div class="absolute -right-12 -bottom-12 w-56 h-56 bg-indigo-500/20 rounded-full blur-3xl"></div>
+            
+            <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+                <div>
+                    <div class="flex flex-wrap items-center gap-2 mb-3">
+                        <span class="px-3 py-1 rounded-full bg-indigo-500/30 border border-indigo-400/30 text-indigo-200 text-xs font-semibold backdrop-blur-sm">
+                            <i class="fa-solid fa-book-open mr-1"></i> Modul Perkuliahan S1/S2 EdTech
+                        </span>
+                        <span class="px-3 py-1 rounded-full bg-slate-800/80 border border-slate-700 text-slate-300 text-xs font-medium">
+                            Pengampu: Dosen Senior Teknologi Pendidikan
+                        </span>
+                    </div>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight leading-snug">
+                        Menganalisis Teori Belajar Kognitif dan Sosial Kognitif dalam Desain Teknologi Pendidikan
+                    </h2>
+                    <p class="text-indigo-200 text-xs sm:text-sm mt-2 max-w-3xl leading-relaxed">
+                        Penyusun: Tim Pengembang Kurikulum Teknologi Pendidikan. Mengintegrasikan pemrosesan kognitif internal (Piaget, Bruner, Ausubel) dan mekanisme sosial-kognitif (Bandura) dalam perancangan media & sistem instruksional modern.
+                    </p>
+                </div>
+
+                <div class="flex items-center space-x-3 shrink-0">
+                    <button onclick="toggleAudioNarrator()" class="flex items-center space-x-2 bg-indigo-600 hover:bg-indigo-500 active:scale-95 text-white px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold shadow-lg shadow-indigo-950/50 transition">
+                        <i id="ttsIcon" class="fa-solid fa-volume-high"></i>
+                        <span id="ttsBtnText">Dengarkan Narasi</span>
+                    </button>
+                    <button onclick="switchTab('quiz')" class="flex items-center space-x-2 bg-emerald-500 hover:bg-emerald-400 active:scale-95 text-slate-950 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold shadow-lg shadow-emerald-950/50 transition">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span>Uji Pemahaman</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Audio Wave Container -->
+            <div id="audioWaveContainer" class="hidden mt-4 pt-3 border-t border-indigo-700/50 flex items-center space-x-3">
+                <span class="text-xs text-indigo-300 font-medium">Memutar Audio Rangkuman Modul:</span>
+                <div class="flex items-end space-x-1 h-5">
+                    <div class="w-1 bg-indigo-400 rounded-full animate-wave-bar-1"></div>
+                    <div class="w-1 bg-indigo-300 rounded-full animate-wave-bar-2"></div>
+                    <div class="w-1 bg-indigo-400 rounded-full animate-wave-bar-3"></div>
+                    <div class="w-1 bg-indigo-200 rounded-full animate-wave-bar-4"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Horizontal Scrollable Navigation Tabs -->
+        <div class="flex border-b border-slate-200 mb-6 overflow-x-auto space-x-1 sm:space-x-2 pb-1 scrollbar-none">
+            <button onclick="switchTab('apersepsi')" id="tab-apersepsi" class="tab-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold flex items-center space-x-2 whitespace-nowrap bg-indigo-600 text-white shadow-sm">
+                <i class="fa-solid fa-shapes"></i>
+                <span>1. Apersepsi Kognitif Klasik</span>
+            </button>
+            <button onclick="switchTab('sub1')" id="tab-sub1" class="tab-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold text-slate-600 hover:bg-slate-200/70 flex items-center space-x-2 whitespace-nowrap">
+                <i class="fa-solid fa-arrows-split-up-and-left"></i>
+                <span>2. Enaktif vs Vicarious</span>
+            </button>
+            <button onclick="switchTab('sub2')" id="tab-sub2" class="tab-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold text-slate-600 hover:bg-slate-200/70 flex items-center space-x-2 whitespace-nowrap">
+                <i class="fa-solid fa-user-gear"></i>
+                <span>3. Pemodelan (Bandura)</span>
+            </button>
+            <button onclick="switchTab('sub3')" id="tab-sub3" class="tab-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold text-slate-600 hover:bg-slate-200/70 flex items-center space-x-2 whitespace-nowrap">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <span>4. Tutoring & SRL</span>
+            </button>
+            <button onclick="switchTab('sub4')" id="tab-sub4" class="tab-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold text-slate-600 hover:bg-slate-200/70 flex items-center space-x-2 whitespace-nowrap">
+                <i class="fa-solid fa-list-check"></i>
+                <span>5. 9 Peristiwa Gagné</span>
+            </button>
+            <button onclick="switchTab('cards')" id="tab-cards" class="tab-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold text-slate-600 hover:bg-slate-200/70 flex items-center space-x-2 whitespace-nowrap">
+                <i class="fa-solid fa-clone"></i>
+                <span>6. Flashcard & Mindmap</span>
+            </button>
+            <button onclick="switchTab('quiz')" id="tab-quiz" class="tab-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold text-slate-600 hover:bg-slate-200/70 flex items-center space-x-2 whitespace-nowrap">
+                <i class="fa-solid fa-pen-to-square"></i>
+                <span>7. Kuis & Studi Kasus</span>
+            </button>
+            <button onclick="switchTab('tutor')" id="tab-tutor" class="tab-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold text-indigo-700 bg-indigo-50 border border-indigo-200 hover:bg-indigo-100 flex items-center space-x-2 whitespace-nowrap">
+                <i class="fa-solid fa-robot"></i>
+                <span>8. AI Tutor & Diskusi</span>
+            </button>
+        </div>
+
+        <!-- Main Content Area Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+
+            <!-- Left Main Content Area (8 Columns) -->
+            <div class="lg:col-span-8 space-y-6">
+
+                <!-- TAB 1: APERSEPSI TEORI KOGNITIF KLASIK -->
+                <div id="content-apersepsi" class="tab-content block space-y-6">
+                    <div class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm leading-relaxed text-slate-700 space-y-6">
+                        
+                        <div class="border-b border-slate-100 pb-4 flex justify-between items-center">
+                            <div>
+                                <span class="text-xs font-bold uppercase tracking-wider text-indigo-600">Retrieval Practice</span>
+                                <h3 class="text-xl font-bold text-slate-900">Fondasi Teori Kognitif Klasik: Piaget, Bruner, & Ausubel</h3>
+                            </div>
+                            <div class="flex items-center space-x-1">
+                                <button onclick="adjustFontSize(1)" class="px-2.5 py-1 rounded bg-slate-100 hover:bg-slate-200 font-bold text-xs">A+</button>
+                                <button onclick="adjustFontSize(-1)" class="px-2.5 py-1 rounded bg-slate-100 hover:bg-slate-200 font-bold text-xs">A-</button>
+                            </div>
+                        </div>
+
+                        <p class="text-sm">
+                            Sebelum kita melangkah ke pemrosesan sosial-kognitif dan aplikasi teknologi instruksional modern, mari kita melakukan <em>retrieval practice</em> terhadap tiga pilar utama teori kognitif klasik: <strong>Jean Piaget</strong>, <strong>Jerome Bruner</strong>, dan <strong>David Ausubel</strong>. Ketiganya menggeser paradigma Behaviorisme dari sekadar "Stimulus-Respon" menjadi pemrosesan informasi internal dalam struktur mental manusia.
+                        </p>
+
+                        <!-- Conceptual Diagram Card -->
+                        <div class="bg-slate-900 text-slate-100 p-6 rounded-2xl shadow-inner font-mono-code text-xs leading-relaxed overflow-x-auto">
+                            <div class="text-center text-amber-400 font-bold mb-4">[ STRUKTUR KOGNITIF / MENTAL ]</div>
+                            <div class="text-center text-slate-400 mb-2">|</div>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 border-t border-slate-800 pt-4">
+                                <div class="bg-slate-800/80 p-3 rounded-xl border border-indigo-500/30 text-center">
+                                    <div class="text-indigo-400 font-bold text-sm mb-1">[ Jean Piaget ]</div>
+                                    <div class="text-slate-300">Konstruksi Mandiri</div>
+                                    <div class="text-slate-400 text-[10px] mt-1">(Asimilasi - Akomodasi - Ekuilibrasi)</div>
+                                </div>
+                                <div class="bg-slate-800/80 p-3 rounded-xl border border-emerald-500/30 text-center">
+                                    <div class="text-emerald-400 font-bold text-sm mb-1">[ Jerome Bruner ]</div>
+                                    <div class="text-slate-300">Modus Representasi</div>
+                                    <div class="text-slate-400 text-[10px] mt-1">(Enaktif - Ikonik - Simbolik)</div>
+                                </div>
+                                <div class="bg-slate-800/80 p-3 rounded-xl border border-purple-500/30 text-center">
+                                    <div class="text-purple-400 font-bold text-sm mb-1">[ David Ausubel ]</div>
+                                    <div class="text-slate-300">Belajar Bermakna</div>
+                                    <div class="text-slate-400 text-[10px] mt-1">(Advance Organizers / Subsumsi)</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Detailed Theory Breakdown -->
+                        <div id="materiTextBody" class="space-y-6 text-sm">
+                            
+                            <!-- 1. Piaget -->
+                            <div class="p-5 rounded-xl border border-indigo-100 bg-indigo-50/30 space-y-3">
+                                <h4 class="font-bold text-indigo-900 text-base flex items-center">
+                                    <span class="w-7 h-7 rounded-lg bg-indigo-600 text-white flex items-center justify-center text-xs mr-2 shadow-sm">1</span>
+                                    Jean Piaget: Konstruktivisme Kognitif Individual
+                                </h4>
+                                <ul class="list-disc pl-5 space-y-2 text-slate-700">
+                                    <li><strong>Mekanisme Belajar:</strong> Piaget menekankan bahwa belajar adalah proses adaptasi kognitif melalui <em>Skema</em> (struktur pengetahuan awal). Adaptasi terjadi lewat dua proses utama:
+                                        <ul class="list-circle pl-5 mt-1 space-y-1 text-xs text-slate-600">
+                                            <li><strong class="text-indigo-700">Asimilasi:</strong> Mengintegrasikan informasi baru ke dalam skema yang sudah ada tanpa mengubah skema tersebut.</li>
+                                            <li><strong class="text-indigo-700">Akomodasi:</strong> Mengubah atau membentuk skema baru karena informasi baru tidak cocok dengan skema lama.</li>
+                                            <li><strong class="text-indigo-700">Ekuilibrasi:</strong> Keadaan seimbang antara asimilasi dan akomodasi. Ketika terjadi ketidakseimbangan (<em>disequilibrium</em>), dorongan kognitif memicu siswa untuk belajar.</li>
+                                        </ul>
+                                    </li>
+                                    <li><strong>Implikasi EdTech:</strong> Desain simulasi interaktif (Virtual Lab) yang memicu konflik kognitif (<em>disequilibrium</em>) sehingga mahasiswa terdorong merevisi pemahamannya.</li>
+                                </ul>
+                            </div>
+
+                            <!-- 2. Bruner -->
+                            <div class="p-5 rounded-xl border border-emerald-100 bg-emerald-50/30 space-y-3">
+                                <h4 class="font-bold text-emerald-900 text-base flex items-center">
+                                    <span class="w-7 h-7 rounded-lg bg-emerald-600 text-white flex items-center justify-center text-xs mr-2 shadow-sm">2</span>
+                                    Jerome Bruner: Teori Perkembangan Kognitif & Discovery Learning
+                                </h4>
+                                <ul class="list-disc pl-5 space-y-2 text-slate-700">
+                                    <li><strong>Mekanisme Belajar:</strong> Pemrosesan pengetahuan berkembang melalui tiga tahapan representasi mental:
+                                        <ol class="list-decimal pl-5 mt-1 space-y-1 text-xs text-slate-600">
+                                            <li><strong class="text-emerald-700">Enaktif:</strong> Belajar melalui tindakan langsung dan manipulasi objek konkret.</li>
+                                            <li><strong class="text-emerald-700">Ikonik:</strong> Belajar melalui gambaran visual, gambar, atau grafik.</li>
+                                            <li><strong class="text-emerald-700">Simbolik:</strong> Belajar melalui simbol-simbol abstrak (bahasa, matematika, logika).</li>
+                                        </ol>
+                                    </li>
+                                    <li><strong>Implikasi EdTech:</strong> Penerapan <em>Scaffolding digital</em> pada e-learning (misalnya dari media interaktif 3D $\rightarrow$ Infografis $\rightarrow$ Rumus/Persamaan Matematika).</li>
+                                </ul>
+                            </div>
+
+                            <!-- 3. Ausubel -->
+                            <div class="p-5 rounded-xl border border-purple-100 bg-purple-50/30 space-y-3">
+                                <h4 class="font-bold text-purple-900 text-base flex items-center">
+                                    <span class="w-7 h-7 rounded-lg bg-purple-600 text-white flex items-center justify-center text-xs mr-2 shadow-sm">3</span>
+                                    David Ausubel: Teori Belajar Bermakna (Meaningful Learning)
+                                </h4>
+                                <ul class="list-disc pl-5 space-y-2 text-slate-700">
+                                    <li><strong>Mekanisme Belajar:</strong> Belajar bermakna terjadi ketika informasi baru dihubungkan secara kontekstual dengan konsep yang sudah dimiliki dalam struktur kognitif siswa (<em>Subsumsi</em>).</li>
+                                    <li><strong>Alat Utama:</strong> <em>Advance Organizers</em> (peta konsep, kerangka awal, atau rangkuman naratif sebelum materi inti disajikan).</li>
+                                    <li><strong>Implikasi EdTech:</strong> Penggunaan Mind Mapping Digital, diagram konseptual awal pada modul interaktif, dan penataan hirarki materi pada Learning Management System (LMS).</li>
+                                </ul>
+                            </div>
+
+                            <!-- Bridge to Social Cognitive -->
+                            <div class="bg-amber-50 border-l-4 border-amber-500 p-4 rounded-r-xl">
+                                <h5 class="font-bold text-amber-900 text-xs uppercase tracking-wider mb-1">Jembatan Kognitif ke Teori Sosial Kognitif</h5>
+                                <p class="text-xs text-amber-800">
+                                    Jika Piaget, Bruner, dan Ausubel berfokus pada pemrosesan internal individu, <strong>Albert Bandura</strong> memperluas ranah ini dengan memasukkan variabel interaksi lingkungan sosial. Kognisi tidak bekerja secara terisolasi, melainkan dipengaruhi oleh pengamatan, pemodelan, dan dorongan efikasi diri.
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <!-- Interactive Simulator Widget: Piaget's Disequilibrium -->
+                        <div class="bg-slate-100 rounded-2xl p-5 border border-slate-300">
+                            <h4 class="font-bold text-slate-900 text-sm mb-3 flex items-center">
+                                <i class="fa-solid fa-flask text-indigo-600 mr-2"></i>
+                                <span>Simulasi Interaktif: Uji Konflik Kognitif Piaget & Scaffolding Bruner</span>
+                            </h4>
+                            <p class="text-xs text-slate-600 mb-4">
+                                Klik tombol untuk memasukkan fenomena baru ke dalam struktur mental mahasiswa dan amati reaksinya:
+                            </p>
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-4">
+                                <button onclick="runCognitiveSim('asimilasi')" class="p-3 bg-white hover:bg-indigo-50 border border-slate-200 rounded-xl text-left text-xs transition">
+                                    <div class="font-bold text-indigo-700">1. Input Cocok</div>
+                                    <div class="text-slate-500 text-[11px]">Proses Asimilasi</div>
+                                </button>
+                                <button onclick="runCognitiveSim('disequilibrium')" class="p-3 bg-white hover:bg-amber-50 border border-slate-200 rounded-xl text-left text-xs transition">
+                                    <div class="font-bold text-amber-700">2. Input Anomali</div>
+                                    <div class="text-slate-500 text-[11px]">Disequilibrium</div>
+                                </button>
+                                <button onclick="runCognitiveSim('akomodasi')" class="p-3 bg-white hover:bg-emerald-50 border border-slate-200 rounded-xl text-left text-xs transition">
+                                    <div class="font-bold text-emerald-700">3. Revisi Skema</div>
+                                    <div class="text-slate-500 text-[11px]">Akomodasi & Ekuilibrasi</div>
+                                </button>
+                            </div>
+                            <div id="cognitiveSimOutput" class="p-4 bg-white rounded-xl border border-slate-200 text-xs font-mono-code text-slate-800">
+                                Status Skema Kognitif: [Seimbang / Equilibration]. Siap menerima stimulus baru...
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- TAB 2: SUB-TOPIK 1 - BELAJAR ENAKTIF DAN VICARIOUS -->
+                <div id="content-sub1" class="tab-content hidden space-y-6">
+                    <div class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm leading-relaxed text-slate-700 space-y-6">
+                        
+                        <div class="border-b border-slate-100 pb-4">
+                            <span class="text-xs font-bold uppercase tracking-wider text-indigo-600">Sub-Topik 1</span>
+                            <h3 class="text-xl font-bold text-slate-900">Mekanisme Belajar Enaktif dan Vicarious dalam SCT</h3>
+                            <p class="text-xs text-slate-500 mt-1">Dalam kerangka Teori Sosial Kognitif (Social Cognitive Theory), pemrosesan informasi terjadi melalui dua mekanisme utama.</p>
+                        </div>
+
+                        <!-- Comparative Matrix Table -->
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left text-xs border-collapse">
+                                <thead>
+                                    <tr class="bg-indigo-950 text-white">
+                                        <th class="p-3 rounded-tl-xl w-1/2">BELAJAR ENAKTIF (Enactive Learning)</th>
+                                        <th class="p-3 rounded-tr-xl w-1/2">BELAJAR VICARIOUS (Vicarious Learning)</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-200 bg-slate-50">
+                                    <tr>
+                                        <td class="p-3">
+                                            <ul class="space-y-1.5 text-slate-700">
+                                                <li><i class="fa-solid fa-check text-indigo-600 mr-1.5"></i><strong>Experiential Learning:</strong> Melalui pengalaman langsung (learning by doing).</li>
+                                                <li><i class="fa-solid fa-check text-indigo-600 mr-1.5"></i><strong>Evaluasi Hasil:</strong> Mengalami langsung konsekuensi dari tindakan.</li>
+                                                <li><i class="fa-solid fa-check text-indigo-600 mr-1.5"></i><strong>Pembentukan Hipotesis:</strong> Respon membangun skema tentang apa yang efektif.</li>
+                                            </ul>
+                                        </td>
+                                        <td class="p-3">
+                                            <ul class="space-y-1.5 text-slate-700">
+                                                <li><i class="fa-solid fa-check text-emerald-600 mr-1.5"></i><strong>Observational Learning:</strong> Melalui amatan perilaku orang lain (model).</li>
+                                                <li><i class="fa-solid fa-check text-emerald-600 mr-1.5"></i><strong>Pemrosesan Simbolik:</strong> Mengolah pengamatan secara kognitif.</li>
+                                                <li><i class="fa-solid fa-check text-emerald-600 mr-1.5"></i><strong>Efisiensi Risiko:</strong> Menghemat waktu & menghindari beban bahaya fisik.</li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Detailed Explanations & EdTech Applications -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+                            
+                            <!-- Enactive Card -->
+                            <div class="bg-indigo-50/50 p-5 rounded-2xl border border-indigo-100 space-y-3">
+                                <h4 class="font-bold text-indigo-900 text-sm flex items-center">
+                                    <i class="fa-solid fa-hand-pointer text-indigo-600 mr-2"></i> A. Belajar Enaktif (Enactive)
+                                </h4>
+                                <p class="text-xs leading-relaxed text-slate-600">
+                                    Konsekuensi dari sebuah tindakan tidak hanya membentuk perilaku secara mekanis (seperti pada behaviorisme), tetapi memberikan informasi dan hipotesis bagi struktur kognitif individu tentang apa yang efektif dan apa yang tidak.
+                                </p>
+                                <div class="bg-white p-3 rounded-xl border border-indigo-100 text-xs space-y-2">
+                                    <div class="font-bold text-indigo-900">Aplikasi Teknologi Pendidikan:</div>
+                                    <div class="flex items-start space-x-2">
+                                        <i class="fa-solid fa-vr-cardboard text-indigo-500 mt-0.5"></i>
+                                        <span><strong>Simulasi & VR (Virtual Reality):</strong> Mahasiswa penerbangan belajar mendaratkan pesawat menggunakan Flight Simulator. Mereka mengalami feedback langsung tanpa bahaya fisik.</span>
+                                    </div>
+                                    <div class="flex items-start space-x-2">
+                                        <i class="fa-solid fa-gamepad text-indigo-500 mt-0.5"></i>
+                                        <span><strong>Gamifikasi Pembelajaran:</strong> Memberikan score/badge instan atas pilihan aksi mahasiswa dalam educational game.</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Vicarious Card -->
+                            <div class="bg-emerald-50/50 p-5 rounded-2xl border border-emerald-100 space-y-3">
+                                <h4 class="font-bold text-emerald-900 text-sm flex items-center">
+                                    <i class="fa-solid fa-eye text-emerald-600 mr-2"></i> B. Belajar Vicarious (Vicarious)
+                                </h4>
+                                <p class="text-xs leading-relaxed text-slate-600">
+                                    Terjadi melalui pengamatan terhadap perilaku orang lain (model) serta konsekuensi yang diterima oleh model tersebut (<em>vicarious reinforcement / vicarious punishment</em>).
+                                </p>
+                                <div class="bg-white p-3 rounded-xl border border-emerald-100 text-xs space-y-2">
+                                    <div class="font-bold text-emerald-900">Aplikasi Teknologi Pendidikan:</div>
+                                    <div class="flex items-start space-x-2">
+                                        <i class="fa-solid fa-video text-emerald-500 mt-0.5"></i>
+                                        <span><strong>Video Pembelajaran Interaktif:</strong> Screencast / Microlearning menonton ahli memecahkan masalah coding langkah demi langkah.</span>
+                                    </div>
+                                    <div class="flex items-start space-x-2">
+                                        <i class="fa-solid fa-file-video text-emerald-500 mt-0.5"></i>
+                                        <span><strong>Studi Kasus Berbasis Video:</strong> Mengamati simulasi sidang hukum atau penanganan medis darurat via rekaman video berkualitas tinggi.</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- TAB 3: SUB-TOPIK 2 - PERAN PEMODELAN (MODELING) -->
+                <div id="content-sub2" class="tab-content hidden space-y-6">
+                    <div class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm leading-relaxed text-slate-700 space-y-6">
+                        
+                        <div class="border-b border-slate-100 pb-4">
+                            <span class="text-xs font-bold uppercase tracking-wider text-indigo-600">Sub-Topik 2</span>
+                            <h3 class="text-xl font-bold text-slate-900">Konstruksi Peran Pemodelan (Modeling) Bandura</h3>
+                            <p class="text-xs text-slate-500 mt-1">Pemodelan bukan sekadar imitasi buta, melainkan proses kognitif aktif yang melibatkan pengolahan informasi simbolik.</p>
+                        </div>
+
+                        <!-- 4-Stage Modeling Pipeline Graphic -->
+                        <div class="bg-indigo-950 text-white p-6 rounded-2xl shadow-md">
+                            <div class="text-center font-bold text-xs uppercase text-indigo-300 tracking-wider mb-4">Pipeline 4 Komponen Utama Proses Pemodelan</div>
+                            <div class="grid grid-cols-1 sm:grid-cols-4 gap-3 text-center text-xs">
+                                <div class="bg-indigo-900 p-3 rounded-xl border border-indigo-700">
+                                    <div class="text-amber-400 font-bold mb-1">[1. ATENSI]</div>
+                                    <div class="text-[11px] text-indigo-200">Memperhatikan Model</div>
+                                    <div class="text-[10px] text-indigo-400 mt-2">Cueing & Zoom-In</div>
+                                </div>
+                                <div class="bg-indigo-900 p-3 rounded-xl border border-indigo-700">
+                                    <div class="text-emerald-400 font-bold mb-1">[2. RETENSI]</div>
+                                    <div class="text-[11px] text-indigo-200">Penyimpanan Simbolik</div>
+                                    <div class="text-[10px] text-indigo-400 mt-2">Rangkuman Visual</div>
+                                </div>
+                                <div class="bg-indigo-900 p-3 rounded-xl border border-indigo-700">
+                                    <div class="text-cyan-400 font-bold mb-1">[3. REPRODUKSI]</div>
+                                    <div class="text-[11px] text-indigo-200">Eksekusi Fisik/Aksi</div>
+                                    <div class="text-[10px] text-indigo-400 mt-2">Kuis & Hands-on</div>
+                                </div>
+                                <div class="bg-indigo-900 p-3 rounded-xl border border-indigo-700">
+                                    <div class="text-rose-400 font-bold mb-1">[4. MOTIVASI]</div>
+                                    <div class="text-[11px] text-indigo-200">Insentif / Penguatan</div>
+                                    <div class="text-[10px] text-indigo-400 mt-2">Vicarious Reinforcement</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Breakdown of Modeling Components -->
+                        <div class="space-y-4 text-xs">
+                            <div class="p-4 bg-slate-50 rounded-xl border border-slate-200">
+                                <h5 class="font-bold text-indigo-900 text-sm mb-1">1. Proses Atensi (Perhatian):</h5>
+                                <p class="text-slate-600 mb-2">Siswa memilih dan memperhatikan fitur kunci dari perilaku model.</p>
+                                <div class="bg-indigo-50 p-2.5 rounded-lg text-indigo-900">
+                                    <strong>Faktor Desain EdTech:</strong> Penggunaan <em>cueing/signaling</em> (sorotan warna, zoom-in, penegasan audio) pada video tutorial agar fokus siswa tidak teralih.
+                                </div>
+                            </div>
+
+                            <div class="p-4 bg-slate-50 rounded-xl border border-slate-200">
+                                <h5 class="font-bold text-indigo-900 text-sm mb-1">2. Proses Retensi (Penyimpanan Memori):</h5>
+                                <p class="text-slate-600 mb-2">Mengodekan informasi amatan ke dalam bentuk simbolik atau visual di memori jangka panjang.</p>
+                                <div class="bg-emerald-50 p-2.5 rounded-lg text-emerald-900">
+                                    <strong>Faktor Desain EdTech:</strong> Menyediakan rangkuman visual, infografis, atau latihan mental (<em>mental rehearsal</em>) setelah video pemodelan.
+                                </div>
+                            </div>
+
+                            <div class="p-4 bg-slate-50 rounded-xl border border-slate-200">
+                                <h5 class="font-bold text-indigo-900 text-sm mb-1">3. Proses Reproduksi Motorik/Kognitif:</h5>
+                                <p class="text-slate-600 mb-2">Menerjemahkan representasi memori menjadi tindakan nyata atau kemampuan pemecahan masalah.</p>
+                                <div class="bg-cyan-50 p-2.5 rounded-lg text-cyan-900">
+                                    <strong>Faktor Desain EdTech:</strong> Menyediakan ruang kuis interaktif, drag-and-drop, atau pengerjaan proyek langsung setelah pengamatan.
+                                </div>
+                            </div>
+
+                            <div class="p-4 bg-slate-50 rounded-xl border border-slate-200">
+                                <h5 class="font-bold text-indigo-900 text-sm mb-1">4. Proses Motivasi (Penguatan):</h5>
+                                <p class="text-slate-600 mb-2">Dorongan untuk mengaktualisasikan perilaku yang telah dipelajari berdasarkan ekspektasi hasil.</p>
+                                <div class="bg-rose-50 p-2.5 rounded-lg text-rose-900">
+                                    <strong>Jenis Penguatan:</strong> Eksternal, Vicarious (melihat model diberi penghargaan), atau Self-Reinforcement (kepuasan internal).
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Types of Models in EdTech -->
+                        <div class="border-t border-slate-200 pt-4">
+                            <h4 class="font-bold text-slate-900 text-sm mb-3">Jenis-Jenis Model dalam Teknologi Pendidikan:</h4>
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+                                <div class="p-3 bg-white border border-slate-200 rounded-xl shadow-sm">
+                                    <div class="font-bold text-indigo-700 mb-1"><i class="fa-solid fa-user-circle mr-1"></i> Live Model</div>
+                                    <div class="text-slate-600">Instruktur atau rekan sejawat yang memperagakan secara langsung di kelas (synchronous).</div>
+                                </div>
+                                <div class="p-3 bg-white border border-slate-200 rounded-xl shadow-sm">
+                                    <div class="font-bold text-purple-700 mb-1"><i class="fa-solid fa-robot mr-1"></i> Symbolic Model</div>
+                                    <div class="text-slate-600">Karakter animasi, avatar instruksional, atau narator dalam media digital.</div>
+                                </div>
+                                <div class="p-3 bg-white border border-slate-200 rounded-xl shadow-sm">
+                                    <div class="font-bold text-amber-700 mb-1"><i class="fa-solid fa-comment-dots mr-1"></i> Cognitive Modeling</div>
+                                    <div class="text-slate-600"><em>Think-Aloud:</em> Model memperagakan aksi sekaligus menyuarakan proses berpikir internalnya saat memecahkan masalah.</div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- TAB 4: SUB-TOPIK 3 - TUTORING & MENTORING SOSIAL KOGNITIF -->
+                <div id="content-sub3" class="tab-content hidden space-y-6">
+                    <div class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm leading-relaxed text-slate-700 space-y-6">
+                        
+                        <div class="border-b border-slate-100 pb-4">
+                            <span class="text-xs font-bold uppercase tracking-wider text-indigo-600">Sub-Topik 3</span>
+                            <h3 class="text-xl font-bold text-slate-900">Aplikasi Tutoring & Mentoring Berbasis Sosial Kognitif</h3>
+                            <p class="text-xs text-slate-500 mt-1">Fokus pada dua konsep kunci: Efikasi Diri (Self-Efficacy) dan Kemandirian Belajar (Self-Regulated Learning - SRL).</p>
+                        </div>
+
+                        <!-- Mindmap Structure for Tutoring Methods -->
+                        <div class="bg-slate-900 text-white p-5 rounded-2xl text-xs space-y-3 font-mono-code">
+                            <div class="text-center font-bold text-amber-400">[ METODE TUTORING & MENTORING SOSIAL KOGNITIF ]</div>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-3 pt-2">
+                                <div class="bg-slate-800 p-3 rounded-xl border border-indigo-500/30">
+                                    <div class="font-bold text-indigo-400 mb-1">Cognitive Apprenticeship</div>
+                                    <div class="text-slate-300 text-[10px]">Modeling $\rightarrow$ Coaching $\rightarrow$ Scaffolding $\rightarrow$ Articulation $\rightarrow$ Reflection</div>
+                                </div>
+                                <div class="bg-slate-800 p-3 rounded-xl border border-emerald-500/30">
+                                    <div class="font-bold text-emerald-400 mb-1">Peer Tutoring & Mentoring</div>
+                                    <div class="text-slate-300 text-[10px]">Model rujukan sejawat untuk menumbuhkan Vicarious Efficacy.</div>
+                                </div>
+                                <div class="bg-slate-800 p-3 rounded-xl border border-cyan-500/30">
+                                    <div class="font-bold text-cyan-400 mb-1">Intelligent Tutoring (ITS)</div>
+                                    <div class="text-slate-300 text-[10px]">Feedback & Scaffolding adaptif berbasis AI / Pedagogical Agents.</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Core Concepts breakdown -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs">
+                            
+                            <!-- Self Efficacy Box -->
+                            <div class="p-5 bg-indigo-50/60 rounded-2xl border border-indigo-100 space-y-3">
+                                <h4 class="font-bold text-indigo-900 text-sm flex items-center">
+                                    <i class="fa-solid fa-bolt text-amber-500 mr-2"></i> Pengembangan Efikasi Diri (Self-Efficacy)
+                                </h4>
+                                <p class="text-slate-600">Keyakinan individu atas kemampuannya menyelesaikan tugas tertentu. 4 Sumber Efikasi Diri:</p>
+                                <ol class="list-decimal pl-4 space-y-1 text-slate-700">
+                                    <li><strong>Mastery Experiences:</strong> Pengalaman sukses langsung.</li>
+                                    <li><strong>Vicarious Experiences:</strong> Melihat kawan sebaya yang setara berhasil.</li>
+                                    <li><strong>Social Persuasion:</strong> Dorongan positif & persuasi mentor.</li>
+                                    <li><strong>Physiological States:</strong> Manajemen kecemasan & kondisi emosional.</li>
+                                </ol>
+                            </div>
+
+                            <!-- SRL Box -->
+                            <div class="p-5 bg-emerald-50/60 rounded-2xl border border-emerald-100 space-y-3">
+                                <h4 class="font-bold text-emerald-900 text-sm flex items-center">
+                                    <i class="fa-solid fa-arrows-spin text-emerald-600 mr-2"></i> Kemandirian Belajar (Self-Regulated Learning / SRL)
+                                </h4>
+                                <p class="text-slate-600">Siklus 3 Fase Pembelajaran Mandiri:</p>
+                                <ul class="space-y-1.5 text-slate-700">
+                                    <li><strong class="text-emerald-800">1. Forethought Phase:</strong> Perencanaan, analisis tugas, dan penetapan target belajar.</li>
+                                    <li><strong class="text-emerald-800">2. Performance Control Phase:</strong> Monitoring proses, kontrol perhatian, dan strategi belajar.</li>
+                                    <li><strong class="text-emerald-800">3. Self-Reflection Phase:</strong> Evaluasi diri, atribusi hasil, dan adaptasi strategi lanjutan.</li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                        <!-- Cognitive Apprenticeship Pipeline Detail -->
+                        <div class="p-5 bg-slate-50 rounded-2xl border border-slate-200 space-y-3 text-xs">
+                            <h4 class="font-bold text-slate-900 text-sm">Tahapan Cognitive Apprenticeship (Magang Kognitif) dalam EdTech:</h4>
+                            <div class="grid grid-cols-1 sm:grid-cols-4 gap-3">
+                                <div class="bg-white p-3 rounded-xl border border-slate-200">
+                                    <span class="font-bold text-indigo-600">1. Modeling</span>
+                                    <p class="text-slate-600 text-[11px] mt-1">Mentor memperagakan alur berpikir (Think-Aloud).</p>
+                                </div>
+                                <div class="bg-white p-3 rounded-xl border border-slate-200">
+                                    <span class="font-bold text-indigo-600">2. Coaching</span>
+                                    <p class="text-slate-600 text-[11px] mt-1">Mentor mengamati & memberi masukan saat siswa mencoba.</p>
+                                </div>
+                                <div class="bg-white p-3 rounded-xl border border-slate-200">
+                                    <span class="font-bold text-indigo-600">3. Scaffolding</span>
+                                    <p class="text-slate-600 text-[11px] mt-1">Bantuan bertahap dikurangi seiring meningkatnya kompetensi.</p>
+                                </div>
+                                <div class="bg-white p-3 rounded-xl border border-slate-200">
+                                    <span class="font-bold text-indigo-600">4. Articulation & Reflection</span>
+                                    <p class="text-slate-600 text-[11px] mt-1">Siswa menjelaskan kembali & membandingkan dengan mentor.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- TAB 5: SUB-TOPIK 4 - EVALUASI 9 PERISTIWA GAGNE -->
+                <div id="content-sub4" class="tab-content hidden space-y-6">
+                    <div class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm leading-relaxed text-slate-700 space-y-6">
+                        
+                        <div class="border-b border-slate-100 pb-4">
+                            <span class="text-xs font-bold uppercase tracking-wider text-indigo-600">Sub-Topik 4</span>
+                            <h3 class="text-xl font-bold text-slate-900">Mengevaluasi Peristiwa Pembelajaran (Instructional Events)</h3>
+                            <p class="text-xs text-slate-500 mt-1">Mengintegrasikan pemrosesan kognitif dengan 9 Peristiwa Pembelajaran Robert Gagné (Nine Events of Instruction).</p>
+                        </div>
+
+                        <!-- 9 Gagné Events Table -->
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left text-xs border-collapse border border-slate-200">
+                                <thead>
+                                    <tr class="bg-indigo-950 text-white">
+                                        <th class="p-3 border border-indigo-900 w-12 text-center">No</th>
+                                        <th class="p-3 border border-indigo-900">Peristiwa Pembelajaran (Gagné)</th>
+                                        <th class="p-3 border border-indigo-900">Proses Kognitif Internal</th>
+                                        <th class="p-3 border border-indigo-900">Evaluasi & Desain EdTech</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-200 bg-white">
+                                    <tr class="hover:bg-slate-50">
+                                        <td class="p-2.5 text-center font-bold">1</td>
+                                        <td class="p-2.5 font-bold text-indigo-900">Gaining Attention<br><span class="font-normal text-[11px] text-slate-500">(Menarik Perhatian)</span></td>
+                                        <td class="p-2.5">Reception<br><span class="text-[11px] text-slate-500">(Penerimaan indera)</span></td>
+                                        <td class="p-2.5">Apakah media pembuka (video interaktif/kasus bernas) berhasil memicu minat?</td>
+                                    </tr>
+                                    <tr class="hover:bg-slate-50 bg-slate-50/50">
+                                        <td class="p-2.5 text-center font-bold">2</td>
+                                        <td class="p-2.5 font-bold text-indigo-900">Informing Learners of Objectives<br><span class="font-normal text-[11px] text-slate-500">(Menyampaikan Tujuan)</span></td>
+                                        <td class="p-2.5">Expectancy<br><span class="text-[11px] text-slate-500">(Ekspektasi/Motivasi)</span></td>
+                                        <td class="p-2.5">Apakah tujuan jelas dan relevan untuk memicu <em>self-efficacy</em>?</td>
+                                    </tr>
+                                    <tr class="hover:bg-slate-50">
+                                        <td class="p-2.5 text-center font-bold">3</td>
+                                        <td class="p-2.5 font-bold text-indigo-900">Stimulating Recall of Prior Learning<br><span class="font-normal text-[11px] text-slate-500">(Mengaktifkan Pengetahuan Awal)</span></td>
+                                        <td class="p-2.5">Retrieval<br><span class="text-[11px] text-slate-500">(Mengingat dari LTM)</span></td>
+                                        <td class="p-2.5">Apakah <em>advance organizer</em> atau kuis apersepsi efektif menghubungkan skema lama?</td>
+                                    </tr>
+                                    <tr class="hover:bg-slate-50 bg-slate-50/50">
+                                        <td class="p-2.5 text-center font-bold">4</td>
+                                        <td class="p-2.5 font-bold text-indigo-900">Presenting the Content<br><span class="font-normal text-[11px] text-slate-500">(Menyajikan Materi)</span></td>
+                                        <td class="p-2.5">Selective Perception<br><span class="text-[11px] text-slate-500">(Persepsi selektif)</span></td>
+                                        <td class="p-2.5">Apakah pemodelan kognitif dan media (teks/gambar/video) disajikan runtut?</td>
+                                    </tr>
+                                    <tr class="hover:bg-slate-50">
+                                        <td class="p-2.5 text-center font-bold">5</td>
+                                        <td class="p-2.5 font-bold text-indigo-900">Providing Learning Guidance<br><span class="font-normal text-[11px] text-slate-500">(Memberikan Bimbingan)</span></td>
+                                        <td class="p-2.5">Semantic Encoding<br><span class="text-[11px] text-slate-500">(Pengkodean makna)</span></td>
+                                        <td class="p-2.5">Apakah ada bentuk <em>scaffolding</em>, contoh soal, atau panduan mentoring yang adekuat?</td>
+                                    </tr>
+                                    <tr class="hover:bg-slate-50 bg-slate-50/50">
+                                        <td class="p-2.5 text-center font-bold">6</td>
+                                        <td class="p-2.5 font-bold text-indigo-900">Eliciting Performance<br><span class="font-normal text-[11px] text-slate-500">(Mendorong Unjuk Kerja)</span></td>
+                                        <td class="p-2.5">Responding<br><span class="text-[11px] text-slate-500">(Praktik/Aksi)</span></td>
+                                        <td class="p-2.5">Apakah siswa diberi kesempatan latihan enaktif (hands-on practice)?</td>
+                                    </tr>
+                                    <tr class="hover:bg-slate-50">
+                                        <td class="p-2.5 text-center font-bold">7</td>
+                                        <td class="p-2.5 font-bold text-indigo-900">Providing Feedback<br><span class="font-normal text-[11px] text-slate-500">(Memberikan Umpan Balik)</span></td>
+                                        <td class="p-2.5">Reinforcement<br><span class="text-[11px] text-slate-500">(Penguatan)</span></td>
+                                        <td class="p-2.5">Apakah umpan balik bersifat formatif & konstruktif untuk efikasi diri?</td>
+                                    </tr>
+                                    <tr class="hover:bg-slate-50 bg-slate-50/50">
+                                        <td class="p-2.5 text-center font-bold">8</td>
+                                        <td class="p-2.5 font-bold text-indigo-900">Assessing Performance<br><span class="font-normal text-[11px] text-slate-500">(Menilai Hasil Belajar)</span></td>
+                                        <td class="p-2.5">Retrieval & Reinforcement<br><span class="text-[11px] text-slate-500">(Uji kompetensi)</span></td>
+                                        <td class="p-2.5">Apakah instrumen evaluasi mengukur tingkat pemahaman kognitif secara autentik?</td>
+                                    </tr>
+                                    <tr class="hover:bg-slate-50">
+                                        <td class="p-2.5 text-center font-bold">9</td>
+                                        <td class="p-2.5 font-bold text-indigo-900">Enhancing Retention & Transfer<br><span class="font-normal text-[11px] text-slate-500">(Meningkatkan Retensi)</span></td>
+                                        <td class="p-2.5">Generalization<br><span class="text-[11px] text-slate-500">(Generalisasi)</span></td>
+                                        <td class="p-2.5">Apakah siswa ditugaskan menerapkan konsep pada situasi dunia nyata yang baru?</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- TAB 6: FLASHCARDS & MINDMAP INTERAKTIF -->
+                <div id="content-cards" class="tab-content hidden space-y-6">
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm text-center">
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Latihan Hafalan Istilah Kunci</span>
+                            <span id="cardProgress" class="text-xs font-bold bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full">Kartu 1 / 6</span>
+                        </div>
+
+                        <!-- 3D Flashcard Element -->
+                        <div class="perspective-1000 my-6">
+                            <div id="flashcardElement" onclick="flipCard()" class="relative w-full h-64 sm:h-72 rounded-2xl shadow-lg bg-gradient-to-br from-indigo-800 to-indigo-950 text-white cursor-pointer transform-style-3d transition-transform duration-500 flex items-center justify-center p-6 text-center select-none border border-indigo-700">
+                                <!-- Front Face -->
+                                <div class="absolute inset-0 backface-hidden flex flex-col items-center justify-center p-6">
+                                    <span class="text-[10px] font-bold uppercase tracking-widest text-indigo-300 mb-2">Istilah Kunci / Konsep</span>
+                                    <h3 id="cardQuestion" class="text-xl sm:text-2xl font-extrabold text-white">Apa itu Asimilasi vs Akomodasi?</h3>
+                                    <p class="text-xs text-indigo-300 mt-4"><i class="fa-solid fa-rotate mr-1"></i> Klik kartu untuk membalik & melihat jawaban</p>
+                                </div>
+                                <!-- Back Face -->
+                                <div class="absolute inset-0 backface-hidden rotate-y-180 bg-slate-900 rounded-2xl flex flex-col items-center justify-center p-6 border-2 border-indigo-400">
+                                    <span class="text-[10px] font-bold uppercase tracking-widest text-emerald-400 mb-2">Penjelasan Konsep</span>
+                                    <p id="cardAnswer" class="text-xs sm:text-sm font-medium text-slate-100 leading-relaxed">
+                                        Asimilasi = Mengintegrasikan informasi baru ke skema lama. Akomodasi = Mengubah skema lama atau membuat skema baru karena terjadi ketidakseimbangan (disequilibrium).
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card Controls -->
+                        <div class="flex items-center justify-between pt-2">
+                            <button onclick="prevCard()" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl font-semibold text-xs transition">
+                                <i class="fa-solid fa-arrow-left mr-1"></i> Sebelum
+                            </button>
+                            <div class="space-x-2">
+                                <button onclick="markCardStatus(false)" class="px-3.5 py-2 bg-rose-100 hover:bg-rose-200 text-rose-700 rounded-xl font-semibold text-xs transition">
+                                    <i class="fa-solid fa-xmark mr-1"></i> Perlu Ulang
+                                </button>
+                                <button onclick="markCardStatus(true)" class="px-3.5 py-2 bg-emerald-100 hover:bg-emerald-200 text-emerald-700 rounded-xl font-semibold text-xs transition">
+                                    <i class="fa-solid fa-check mr-1"></i> Sudah Paham (+10 Pts)
+                                </button>
+                            </div>
+                            <button onclick="nextCard()" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl font-semibold text-xs transition">
+                                Lanjut <i class="fa-solid fa-arrow-right ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Visual Mindmap Interactive Tree -->
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                        <h4 class="font-bold text-slate-900 text-sm mb-4 flex items-center">
+                            <i class="fa-solid fa-sitemap text-indigo-600 mr-2"></i> Peta Hibrida Teori Kognitif & Sosial Kognitif
+                        </h4>
+                        <div id="mindmapContainer" class="space-y-3">
+                            <!-- Injected dynamically via JS -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 7: KUIS INTERAKTIF & STUDA KASUS -->
+                <div id="content-quiz" class="tab-content hidden space-y-6">
+                    <!-- Quiz Card -->
+                    <div id="quizContainer" class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm">
+                        <div class="flex justify-between items-center pb-4 mb-6 border-b border-slate-100">
+                            <div>
+                                <h3 class="font-bold text-slate-900 text-lg">Kuis Evaluasi Pemahaman Modul</h3>
+                                <p class="text-xs text-slate-500">Uji daya tangkap Anda terhadap materi Kognitif & Sosial Kognitif</p>
+                            </div>
+                            <span id="quizCounter" class="text-xs font-bold bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full">Soal 1 Dari 4</span>
+                        </div>
+
+                        <h4 id="quizQuestionText" class="text-sm sm:text-base font-bold text-slate-800 mb-6">
+                            Loading pertanyaan...
+                        </h4>
+
+                        <div id="quizOptionsContainer" class="space-y-3 mb-6">
+                            <!-- Options rendered dynamically -->
+                        </div>
+
+                        <div id="quizFeedback" class="hidden p-4 rounded-xl mb-6 text-xs font-medium"></div>
+
+                        <div class="flex justify-between items-center pt-2">
+                            <button id="btnPrevQuiz" onclick="prevQuizQuestion()" class="px-4 py-2 bg-slate-100 text-slate-600 rounded-xl font-semibold text-xs hover:bg-slate-200 disabled:opacity-40">
+                                <i class="fa-solid fa-chevron-left mr-1"></i> Sebelumnya
+                            </button>
+                            <button id="btnNextQuiz" onclick="nextQuizQuestion()" class="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl font-bold text-xs shadow-md transition">
+                                Selanjutnya <i class="fa-solid fa-chevron-right ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Quiz Result Summary Card (hidden by default) -->
+                    <div id="quizResultCard" class="hidden bg-white p-8 rounded-2xl border border-slate-200 shadow-lg text-center space-y-4">
+                        <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto text-2xl font-bold">
+                            <i class="fa-solid fa-trophy"></i>
+                        </div>
+                        <h3 class="text-2xl font-extrabold text-slate-900">Kuis Selesai!</h3>
+                        <p class="text-slate-600 text-xs">Pencapaian evaluasi modul teori belajar Anda:</p>
+                        <div id="finalQuizScore" class="text-4xl font-extrabold text-indigo-600 py-2">100 / 100</div>
+                        <button onclick="restartQuiz()" class="px-5 py-2.5 bg-indigo-600 text-white rounded-xl font-bold text-xs">
+                            <i class="fa-solid fa-rotate-right mr-1"></i> Coba Kuis Lagi
+                        </button>
+                    </div>
+
+                    <!-- Case Study Submission Box -->
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                        <h3 class="font-bold text-slate-900 text-base flex items-center">
+                            <i class="fa-solid fa-file-pen text-indigo-600 mr-2"></i>
+                            <span>📝 Tugas Analisis Desain Instruksional (Studi Kasus)</span>
+                        </h3>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Pilihlah salah satu platform teknologi pembelajaran populer (misalnya: <strong>Duolingo, Khan Academy, Coursera, atau Virtual Lab PhET</strong>). Analisis dan tuliskan penilaian Anda berdasarkan 4 poin instruksi tugas modul.
+                        </p>
+                        
+                        <div class="space-y-3">
+                            <input type="text" id="casePlatformInput" placeholder="Nama Platform EdTech yang dipilih (cth: PhET Virtual Lab)" class="w-full text-xs px-3.5 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+                            <textarea id="caseAnalysisText" rows="5" placeholder="Tuliskan analisis 4 poin: 1. Mekanisme Enaktif/Vicarious, 2. Tahapan Pemodelan Bandura, 3. Mentoring & SRL, 4. Evaluasi 9 Peristiwa Gagné..." class="w-full text-xs p-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:outline-none leading-relaxed"></textarea>
+                        </div>
+
+                        <button onclick="evaluateCaseStudyAI()" class="w-full py-3 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-xs font-bold transition flex items-center justify-center space-x-2">
+                            <i class="fa-solid fa-wand-magic-sparkles text-amber-400"></i>
+                            <span>Submit & Evaluasi Analisis oleh AI Tutor</span>
+                        </button>
+                        <div id="caseFeedbackBox" class="hidden p-4 rounded-xl text-xs bg-indigo-50 border border-indigo-200 text-indigo-900"></div>
+                    </div>
+                </div>
+
+                <!-- TAB 8: AI TUTOR & RUANG DISKUSI MAHASISWA -->
+                <div id="content-tutor" class="tab-content hidden space-y-6">
+                    <!-- Discussion Prompt Questions Box -->
+                    <div class="bg-indigo-950 text-white p-6 rounded-2xl shadow-md space-y-4">
+                        <h3 class="font-bold text-sm text-indigo-200 flex items-center">
+                            <i class="fa-solid fa-comments text-amber-400 mr-2"></i>
+                            <span>💬 Pertanyaan Pemantik Diskusi Mahasiswa</span>
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                            <div onclick="sendQuickPrompt('Bagaimana pemodelan simbolik melalui karakter AI Pedagogical Agent dapat menumbuhkan atau mereduksi efikasi diri mahasiswa dibanding dosen manusia secara langsung?')" class="p-3.5 bg-indigo-900/80 hover:bg-indigo-900 rounded-xl border border-indigo-700 cursor-pointer transition">
+                                <strong class="text-amber-300 block mb-1">Soal Diskusi 1: AI vs Human Efficacy</strong>
+                                <p class="text-indigo-200 text-[11px]">Bagaimana pemodelan simbolik AI Agent mempengaruhi efikasi diri dibanding dosen manusia langsung?</p>
+                            </div>
+                            <div onclick="sendQuickPrompt('Dalam perancangan modul e-learning, manakah yang lebih efektif antara penyajian induktif berbasis temuan (Bruner) atau deduktif berbasis skema terstruktur (Ausubel)?')" class="p-3.5 bg-indigo-900/80 hover:bg-indigo-900 rounded-xl border border-indigo-700 cursor-pointer transition">
+                                <strong class="text-amber-300 block mb-1">Soal Diskusi 2: Bruner vs Ausubel</strong>
+                                <p class="text-indigo-200 text-[11px]">Manakah yang lebih efektif antara penyajian induktif Bruner vs deduktif Ausubel dalam Cognitive Load Theory?</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- AI Chat Interface -->
+                    <div class="bg-white rounded-2xl border border-slate-200 shadow-sm flex flex-col h-[500px]">
+                        <div class="p-4 border-b border-slate-100 bg-indigo-900 text-white rounded-t-2xl flex items-center justify-between">
+                            <div class="flex items-center space-x-2.5">
+                                <div class="w-8 h-8 rounded-lg bg-indigo-700 flex items-center justify-center text-indigo-200 font-bold text-xs">
+                                    <i class="fa-solid fa-robot"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-xs">Asisten Tutor AI Teori Belajar</h4>
+                                    <p class="text-[10px] text-indigo-200">Menjawab pertanyaan & pemrosesan kognitif modul</p>
+                                </div>
+                            </div>
+                            <span class="w-2.5 h-2.5 bg-emerald-400 rounded-full animate-pulse" title="Online"></span>
+                        </div>
+
+                        <div id="chatHistory" class="flex-1 p-4 overflow-y-auto space-y-3 text-xs">
+                            <div class="flex items-start space-x-2">
+                                <div class="w-7 h-7 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center shrink-0 font-bold text-[10px]">AI</div>
+                                <div class="bg-slate-100 text-slate-800 p-3 rounded-2xl rounded-tl-none leading-relaxed max-w-[85%]">
+                                    Selamat datang di Ruang Diskusi! Saya siap membantu Anda mendalami konsep Piaget, Bruner, Ausubel, Bandura, maupun 9 Peristiwa Gagné. Silakan pilih salah satu pemantik diskusi atau ajukan pertanyaan kustom! 💡
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-3 border-t border-slate-100 flex items-center space-x-2">
+                            <input type="text" id="userChatInput" onkeypress="if(event.key==='Enter') sendChatMessage()" placeholder="Tuliskan pertanyaan seputar modul..." class="flex-1 bg-slate-100 text-slate-800 text-xs px-3.5 py-2.5 rounded-xl border-0 focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+                            <button onclick="sendChatMessage()" class="w-9 h-9 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white flex items-center justify-center transition shrink-0">
+                                <i class="fa-solid fa-paper-plane text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Right Sidebar Widgets (4 Columns) -->
+            <div class="lg:col-span-4 space-y-6">
+
+                <!-- Module Quick Summary Widget -->
+                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+                    <h4 class="font-bold text-slate-800 text-xs uppercase tracking-wider flex items-center">
+                        <i class="fa-solid fa-bookmark text-indigo-600 mr-2"></i>
+                        <span>Ringkasan Alur Modul</span>
+                    </h4>
+                    <div class="space-y-2 text-xs text-slate-600">
+                        <div class="p-2.5 bg-slate-50 rounded-xl flex items-center justify-between">
+                            <span>1. Apersepsi Kognitif</span>
+                            <span class="text-emerald-600 font-bold text-[10px]"><i class="fa-solid fa-check"></i> Selesai</span>
+                        </div>
+                        <div class="p-2.5 bg-slate-50 rounded-xl flex items-center justify-between">
+                            <span>2. Enaktif vs Vicarious</span>
+                            <span class="text-indigo-600 text-[10px] font-bold">2 Topik</span>
+                        </div>
+                        <div class="p-2.5 bg-slate-50 rounded-xl flex items-center justify-between">
+                            <span>3. Pipeline Pemodelan</span>
+                            <span class="text-indigo-600 text-[10px] font-bold">4 Tahap</span>
+                        </div>
+                        <div class="p-2.5 bg-slate-50 rounded-xl flex items-center justify-between">
+                            <span>4. Tutoring & SRL</span>
+                            <span class="text-indigo-600 text-[10px] font-bold">4 Efikasi</span>
+                        </div>
+                        <div class="p-2.5 bg-slate-50 rounded-xl flex items-center justify-between">
+                            <span>5. 9 Peristiwa Gagné</span>
+                            <span class="text-indigo-600 text-[10px] font-bold">9 Events</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Self-Efficacy Meter Simulator -->
+                <div class="bg-gradient-to-br from-indigo-900 to-slate-900 text-white p-5 rounded-2xl shadow-md space-y-3">
+                    <h4 class="font-bold text-xs uppercase tracking-wider text-indigo-200 flex items-center">
+                        <i class="fa-solid fa-gauge-high text-amber-400 mr-2"></i>
+                        <span>Kalkulator Efikasi Diri Mahasiswa</span>
+                    </h4>
+                    <p class="text-[11px] text-indigo-300">Ukur proyeksi tingkat efikasi diri berdasarkan sumber pengalaman belajar:</p>
+                    <div class="space-y-2 text-xs">
+                        <div>
+                            <label class="text-[10px] text-slate-300 block mb-1">Mastery Experience (Pengalaman Sukses):</label>
+                            <input type="range" id="masteryRange" min="1" max="10" value="7" oninput="calculateEfficacy()" class="w-full accent-indigo-500">
+                        </div>
+                        <div>
+                            <label class="text-[10px] text-slate-300 block mb-1">Vicarious Experience (Melihat Teman Sukses):</label>
+                            <input type="range" id="vicariousRange" min="1" max="10" value="8" oninput="calculateEfficacy()" class="w-full accent-emerald-500">
+                        </div>
+                        <div>
+                            <label class="text-[10px] text-slate-300 block mb-1">Social Persuasion (Dorongan Mentor):</label>
+                            <input type="range" id="persuasionRange" min="1" max="10" value="6" oninput="calculateEfficacy()" class="w-full accent-amber-500">
+                        </div>
+                    </div>
+                    <div class="p-3 bg-indigo-950 rounded-xl border border-indigo-700 text-center">
+                        <div class="text-[10px] text-indigo-300">Skor Proyeksi Self-Efficacy:</div>
+                        <div id="efficacyScoreText" class="text-2xl font-extrabold text-amber-400">73% (Tinggi)</div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-6 mt-12 text-center text-xs text-slate-500">
+        <div class="max-w-7xl mx-auto px-4">
+            <p>© 2026 Modul Perkuliahan Teori Belajar & Pembelajaran. Tim Pengembang Kurikulum Teknologi Pendidikan.</p>
+        </div>
+    </footer>
+
+    <script>
+        /* GLOBAL APPLICATION STATE & DATA STRUCTURES */
+        let totalScore = 0;
+        let cardIndex = 0;
+        let isCardFlipped = false;
+        let quizIndex = 0;
+        let userAnswers = [];
+
+        /* FLASHCARD DATABASE */
+        const FLASHCARDS = [
+            {
+                q: "Apa perbedaan mendasar antara Asimilasi dan Akomodasi Piaget?",
+                a: "Asimilasi mengintegrasikan informasi baru ke skema lama tanpa mengubahnya. Akomodasi mengubah atau membentuk skema baru karena terjadi disequilibrium."
+            },
+            {
+                q: "Sebutkan 3 tahapan representasi kognitif Jerome Bruner!",
+                a: "1. Enaktif (Tindakan/Manipulasi Konkret), 2. Ikonik (Gambaran Visual/Grafik), 3. Simbolik (Simbol Abstrak/Bahasa/Matematika)."
+            },
+            {
+                q: "Apa fungsi Advance Organizers dalam teori Ausubel?",
+                a: "Merupakan kerangka awal/peta konsep sebelum materi disajikan untuk menghubungkan informasi baru dengan skema kognitif yang ada (Subsumsi)."
+            },
+            {
+                q: "Apa perbedaan Belajar Enaktif vs Vicarious dalam SCT Bandura?",
+                a: "Enaktif terjadi melalui pengalaman aksi langsung (experiential learning). Vicarious terjadi melalui amatan terhadap orang lain (observational learning)."
+            },
+            {
+                q: "Sebutkan 4 tahapan pipeline proses pemodelan Albert Bandura!",
+                a: "1. Atensi (Perhatian), 2. Retensi (Penyimpanan Memori), 3. Reproduksi (Eksekusi Aksi), 4. Motivasi (Penguatan/Insentif)."
+            },
+            {
+                q: "Apa saja 4 sumber utama pembentuk Self-Efficacy?",
+                a: "1. Mastery Experiences, 2. Vicarious Experiences, 3. Social Persuasion, 4. Physiological & Emotional States."
+            }
+        ];
+
+        /* QUIZ DATABASE */
+        const QUIZ_QUESTIONS = [
+            {
+                q: "Ketika mahasiswa menemukan simulasi Virtual Lab yang memicu pertentangan antara prasangka awal dengan hasil eksperimen, terjadi keadaan kognitif yang disebut Piaget sebagai...",
+                options: ["Asimilasi Otomatis", "Disequilibrium (Ketidakseimbangan)", "Subsumsi Obliteratif", "Reproduksi Motorik"],
+                correct: 1,
+                explanation: "Disequilibrium adalah dorongan ketidakseimbangan kognitif yang memicu mahasiswa melakukan akomodasi skema baru."
+            },
+            {
+                q: "Menonton video screencast berisi ahli pemrograman yang menjelaskan alur pikirannya saat memecahkan bug coding merupakan penerapan dari...",
+                options: ["Cognitive Modeling (Think-Aloud) & Vicarious Learning", "Belajar Enaktif Murni", "Asimilasi Tanpa Akomodasi", "Scaffolding Simbolik Murni"],
+                correct: 0,
+                explanation: "Model memperagakan aksi sekaligus menyuarakan proses berpikir internalnya (Think-Aloud) yang diamati secara Vicarious oleh siswa."
+            },
+            {
+                q: "Penggunaan sorotan warna (highlighting), zoom-in, dan penegasan audio pada video tutorial e-learning dirancang khusus untuk memfasilitasi komponen pemodelan...",
+                options: ["Retensi", "Atensi (Perhatian)", "Reproduksi", "Motivasi Eksternal"],
+                correct: 1,
+                explanation: "Cueing & signaling visual/audio bertujuan menarik dan memfokuskan proses Atensi siswa ke fitur kunci materi."
+            },
+            {
+                q: "Tahap dalam 9 Peristiwa Pembelajaran Gagné yang memicu pengkodean makna (Semantic Encoding) melalui pemberian bimbingan dan contoh adalah...",
+                options: ["Gaining Attention", "Providing Learning Guidance", "Eliciting Performance", "Assessing Performance"],
+                correct: 1,
+                explanation: "Providing Learning Guidance membantu semantic encoding dengan memberikan struktur bantuan (scaffolding) dan contoh."
+            }
+        ];
+
+        /* MINDMAP DATA STRUCTURE */
+        const MINDMAP_DATA = [
+            { title: "Pilar Kognitif Klasik", items: ["Piaget: Asimilasi, Akomodasi, Ekuilibrasi", "Bruner: Enaktif, Ikonik, Simbolik", "Ausubel: Advance Organizers & Subsumsi"] },
+            { title: "Mekanisme Sosial Kognitif (Bandura)", items: ["Belajar Enaktif (Direct Action) vs Vicarious (Observation)", "Pipeline Pemodelan: Atensi -> Retensi -> Reproduksi -> Motivasi"] },
+            { title: "Tutoring & Mentoring EdTech", items: ["Efikasi Diri (4 Sumber) & SRL (3 Fase Cycle)", "Cognitive Apprenticeship & Intelligent Tutoring Systems (ITS)"] },
+            { title: "Instruksional 9 Gagné Events", items: ["Gaining Attention, Objectives, Recall, Content, Guidance, Performance, Feedback, Assessment, Retention"] }
+        ];
+
+        window.onload = function() {
+            renderFlashcard();
+            renderQuizQuestion();
+            renderMindmap();
+            calculateEfficacy();
+        };
+
+        /* TAB SWITCHING */
+        function switchTab(tabId) {
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(c => c.classList.add('hidden'));
+
+            const btns = document.querySelectorAll('.tab-btn');
+            btns.forEach(b => {
+                b.classList.remove('bg-indigo-600', 'text-white', 'shadow-sm');
+                b.classList.add('text-slate-600');
+            });
+
+            const targetContent = document.getElementById(`content-${tabId}`);
+            if (targetContent) targetContent.classList.remove('hidden');
+
+            const targetBtn = document.getElementById(`tab-${tabId}`);
+            if (targetBtn) {
+                targetBtn.classList.add('bg-indigo-600', 'text-white', 'shadow-sm');
+                targetBtn.classList.remove('text-slate-600');
+            }
+
+            // Update Header Progress Bar
+            const tabProgressMap = { apersepsi: '15%', sub1: '30%', sub2: '45%', sub3: '60%', sub4: '75%', cards: '85%', quiz: '95%', tutor: '100%' };
+            document.getElementById('moduleProgressBar').style.width = tabProgressMap[tabId] || '20%';
+        }
+
+        /* PIAGET SIMULATOR */
+        function runCognitiveSim(type) {
+            const out = document.getElementById('cognitiveSimOutput');
+            if (type === 'asimilasi') {
+                out.className = "p-4 bg-indigo-50 rounded-xl border border-indigo-200 text-xs font-mono-code text-indigo-900";
+                out.innerHTML = "<strong>[ASIMILASI]:</strong> Informasi baru cocok dengan Skema Awal. Pengetahuan langsung diserap tanpa merubah struktur mental.";
+            } else if (type === 'disequilibrium') {
+                out.className = "p-4 bg-amber-50 rounded-xl border border-amber-200 text-xs font-mono-code text-amber-900";
+                out.innerHTML = "<strong>[DISEQUILIBRIUM]:</strong> Anomali terdeteksi! Konflik kognitif memicu ketidakseimbangan. Mahasiswa terdorong merevisi prasangkanya.";
+            } else {
+                out.className = "p-4 bg-emerald-50 rounded-xl border border-emerald-200 text-xs font-mono-code text-emerald-900";
+                out.innerHTML = "<strong>[AKOMODASI & EQUILIBRATION]:</strong> Skema baru terbentuk! Struktur mental mencapai keseimbangan baru pada tingkat pemahaman lebih tinggi.";
+            }
+        }
+
+        /* FLASHCARD ENGINE */
+        function renderFlashcard() {
+            const card = FLASHCARDS[cardIndex];
+            document.getElementById('cardProgress').innerText = `Kartu ${cardIndex + 1} / ${FLASHCARDS.length}`;
+            document.getElementById('cardQuestion').innerText = card.q;
+            document.getElementById('cardAnswer').innerText = card.a;
+            
+            const el = document.getElementById('flashcardElement');
+            el.classList.remove('rotate-y-180');
+            isCardFlipped = false;
+        }
+
+        function flipCard() {
+            const el = document.getElementById('flashcardElement');
+            isCardFlipped = !isCardFlipped;
+            if (isCardFlipped) el.classList.add('rotate-y-180');
+            else el.classList.remove('rotate-y-180');
+        }
+
+        function nextCard() {
+            cardIndex = (cardIndex + 1) % FLASHCARDS.length;
+            renderFlashcard();
+        }
+
+        function prevCard() {
+            cardIndex = (cardIndex - 1 + FLASHCARDS.length) % FLASHCARDS.length;
+            renderFlashcard();
+        }
+
+        function markCardStatus(isMastered) {
+            if (isMastered) {
+                totalScore += 10;
+                updateScoreDisplay();
+                showToast("Bagus! +10 Pts ditambahkan ke Skor Modul");
+            }
+            nextCard();
+        }
+
+        /* MINDMAP RENDERER */
+        function renderMindmap() {
+            const container = document.getElementById('mindmapContainer');
+            container.innerHTML = '';
+            MINDMAP_DATA.forEach((group, idx) => {
+                const box = document.createElement('div');
+                box.className = "p-4 bg-slate-50 border border-slate-200 rounded-xl text-xs space-y-2";
+                let listHtml = group.items.map(it => `<li class="flex items-center space-x-2 text-slate-600"><i class="fa-solid fa-circle-dot text-indigo-500 text-[8px]"></i><span>${it}</span></li>`).join('');
+                box.innerHTML = `
+                    <div class="font-bold text-slate-800 flex items-center space-x-2">
+                        <span class="w-5 h-5 rounded bg-indigo-600 text-white font-bold flex items-center justify-center text-[10px]">${idx + 1}</span>
+                        <span>${group.title}</span>
+                    </div>
+                    <ul class="pl-7 space-y-1">${listHtml}</ul>
+                `;
+                container.appendChild(box);
+            });
+        }
+
+        /* QUIZ ENGINE */
+        function renderQuizQuestion() {
+            if (quizIndex >= QUIZ_QUESTIONS.length) {
+                document.getElementById('quizContainer').classList.add('hidden');
+                document.getElementById('quizResultCard').classList.remove('hidden');
+                
+                let correctCount = 0;
+                userAnswers.forEach((ans, i) => {
+                    if (ans === QUIZ_QUESTIONS[i].correct) correctCount++;
+                });
+                const finalScore = Math.round((correctCount / QUIZ_QUESTIONS.length) * 100);
+                document.getElementById('finalQuizScore').innerText = `${finalScore} / 100`;
+                totalScore += finalScore;
+                updateScoreDisplay();
+                return;
+            }
+
+            document.getElementById('quizContainer').classList.remove('hidden');
+            document.getElementById('quizResultCard').classList.add('hidden');
+
+            const item = QUIZ_QUESTIONS[quizIndex];
+            document.getElementById('quizCounter').innerText = `Soal ${quizIndex + 1} Dari ${QUIZ_QUESTIONS.length}`;
+            document.getElementById('quizQuestionText').innerText = item.q;
+
+            const optsContainer = document.getElementById('quizOptionsContainer');
+            optsContainer.innerHTML = '';
+            const selected = userAnswers[quizIndex];
+
+            item.options.forEach((opt, optIdx) => {
+                const btn = document.createElement('button');
+                btn.className = `w-full text-left p-3.5 rounded-xl border text-xs font-medium transition flex items-center justify-between ${
+                    selected === optIdx ? 'border-indigo-600 bg-indigo-50 text-indigo-900 font-bold' : 'border-slate-200 bg-slate-50/60 hover:bg-slate-100 text-slate-700'
+                }`;
+                btn.onclick = () => { userAnswers[quizIndex] = optIdx; renderQuizQuestion(); };
+                btn.innerHTML = `
+                    <span><strong class="mr-2">${String.fromCharCode(65 + optIdx)}.</strong> ${opt}</span>
+                    ${selected === optIdx ? '<i class="fa-solid fa-circle-check text-indigo-600"></i>' : ''}
+                `;
+                optsContainer.appendChild(btn);
+            });
+
+            const feedback = document.getElementById('quizFeedback');
+            if (selected !== undefined) {
+                feedback.classList.remove('hidden');
+                if (selected === item.correct) {
+                    feedback.className = "p-4 rounded-xl mb-6 text-xs font-medium bg-emerald-50 text-emerald-800 border border-emerald-200";
+                    feedback.innerHTML = `<i class="fa-solid fa-check-circle mr-1 text-emerald-600"></i> <strong>Benar!</strong> ${item.explanation}`;
+                } else {
+                    feedback.className = "p-4 rounded-xl mb-6 text-xs font-medium bg-rose-50 text-rose-800 border border-rose-200";
+                    feedback.innerHTML = `<i class="fa-solid fa-circle-xmark mr-1 text-rose-600"></i> <strong>Jawaban Kurang Tepat.</strong> Penjelasan: ${item.explanation}`;
+                }
+            } else {
+                feedback.classList.add('hidden');
+            }
+
+            document.getElementById('btnPrevQuiz').disabled = (quizIndex === 0);
+        }
+
+        function nextQuizQuestion() {
+            if (userAnswers[quizIndex] === undefined) {
+                showToast("Pilih salah satu jawaban terlebih dahulu!");
+                return;
+            }
+            quizIndex++;
+            renderQuizQuestion();
+        }
+
+        function prevQuizQuestion() {
+            if (quizIndex > 0) {
+                quizIndex--;
+                renderQuizQuestion();
+            }
+        }
+
+        function restartQuiz() {
+            quizIndex = 0;
+            userAnswers = [];
+            renderQuizQuestion();
+        }
+
+        /* EFFICACY CALCULATOR */
+        function calculateEfficacy() {
+            const m = parseInt(document.getElementById('masteryRange').value);
+            const v = parseInt(document.getElementById('vicariousRange').value);
+            const p = parseInt(document.getElementById('persuasionRange').value);
+            const total = Math.round(((m * 0.45) + (v * 0.35) + (p * 0.20)) * 10);
+            document.getElementById('efficacyScoreText').innerText = `${total}% (${total > 75 ? 'Sangat Tinggi' : total > 50 ? 'Moderat' : 'Perlu Didorong'})`;
+        }
+
+        /* CHATBOT & AI TUTOR SIMULATOR */
+        function sendChatMessage() {
+            const input = document.getElementById('userChatInput');
+            const prompt = input.value.trim();
+            if (!prompt) return;
+
+            appendMessage('user', prompt);
+            input.value = '';
+
+            const aiBubble = appendMessage('ai', 'Sedang menyusun penjelasan teori kognitif...');
+
+            setTimeout(() => {
+                let responseText = "";
+                const pLower = prompt.toLowerCase();
+
+                if (pLower.includes("ai vs human") || pLower.includes("pedagogical agent") || pLower.includes("karakter")) {
+                    responseText = "Pemodelan simbolik melalui AI Pedagogical Agent memberikan konsistensi & aksesibillitas tanpa batas. Namun, pemodelan oleh Dosen Manusia secara langsung memberikan dampak Vicarious Efficacy yang lebih emosional dan otentik karena mahasiswa merasa dosen adalah rujukan nyata.";
+                } else if (pLower.includes("bruner") || pLower.includes("ausubel") || pLower.includes("induktif")) {
+                    responseText = "Dalam sudut pandang Cognitive Load Theory (CLT), metode Ausubel (deduktif dengan Advance Organizer) cenderung lebih efisien menurunkan Extraneous Cognitive Load pada pemula. Sebaliknya, Discovery Learning Bruner sangat efektif untuk retensi jangka panjang setelah mahasiswa memiliki skema awal.";
+                } else if (pLower.includes("piaget") || pLower.includes("skema")) {
+                    responseText = "Piaget menekankan bahwa belajar terjadi lewat Asimilasi (integrasi ke skema lama) dan Akomodasi (mengubah skema karena Disequilibrium). Dalam EdTech, ini diaplikasikan lewat simulasi konflik kognitif.";
+                } else {
+                    responseText = `Berdasarkan materi '${prompt}', kuncinya adalah bagaimana teknologi instruksional menjembatani pemrosesan mental individu (Kognitif) dan pemodelan amatan sosial (Social Cognitive SCT).`;
+                }
+                aiBubble.innerText = responseText;
+            }, 900);
+        }
+
+        function sendQuickPrompt(text) {
+            document.getElementById('userChatInput').value = text;
+            sendChatMessage();
+        }
+
+        function appendMessage(sender, text) {
+            const history = document.getElementById('chatHistory');
+            const wrapper = document.createElement('div');
+            wrapper.className = "flex items-start space-x-2";
+
+            if (sender === 'user') {
+                wrapper.innerHTML = `
+                    <div class="ml-auto bg-indigo-600 text-white p-3 rounded-2xl rounded-tr-none text-xs leading-relaxed max-w-[85%] font-medium">
+                        ${text}
+                    </div>
+                `;
+            } else {
+                wrapper.innerHTML = `
+                    <div class="w-7 h-7 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center shrink-0 font-bold text-[10px]">AI</div>
+                    <div class="bg-slate-100 text-slate-800 p-3 rounded-2xl rounded-tl-none text-xs leading-relaxed max-w-[85%] chat-text-body">
+                        ${text}
+                    </div>
+                `;
+            }
+            history.appendChild(wrapper);
+            history.scrollTop = history.scrollHeight;
+            return wrapper.querySelector('.chat-text-body') || wrapper.firstElementChild;
+        }
+
+        /* CASE STUDY AI EVALUATION */
+        function evaluateCaseStudyAI() {
+            const platform = document.getElementById('casePlatformInput').value.trim();
+            const text = document.getElementById('caseAnalysisText').value.trim();
+            const fbBox = document.getElementById('caseFeedbackBox');
+
+            if (!platform || !text) {
+                showToast("Isi nama platform dan teks analisis terlebih dahulu!");
+                return;
+            }
+
+            fbBox.classList.remove('hidden');
+            fbBox.innerHTML = "<i class='fa-solid fa-spinner fa-spin mr-2'></i>Menganalisis kesesuaian tugas dengan 4 indikator kognitif...";
+
+            setTimeout(() => {
+                fbBox.innerHTML = `
+                    <div class="font-bold text-emerald-800 mb-1"><i class="fa-solid fa-circle-check text-emerald-600 mr-1"></i> Evaluasi AI Tutor (Skor: 92/100)</div>
+                    <p class="text-slate-700">Analisis Anda terhadap <strong>${platform}</strong> berhasil mengidentifikasi mekanisme Enaktif/Vicarious serta tahapan pemodelan Bandura dengan sangat tepat. Pertahankan artikulasi kritis ini!</p>
+                `;
+                totalScore += 25;
+                updateScoreDisplay();
+            }, 1200);
+        }
+
+        /* WEB SPEECH NARRATOR FALLBACK */
+        function toggleAudioNarrator() {
+            const btnText = document.getElementById('ttsBtnText');
+            const wave = document.getElementById('audioWaveContainer');
+
+            if ('speechSynthesis' in window) {
+                if (window.speechSynthesis.speaking) {
+                    window.speechSynthesis.cancel();
+                    btnText.innerText = "Dengarkan Narasi";
+                    wave.classList.add('hidden');
+                } else {
+                    const text = "Modul Perkuliahan Teori Belajar dan Pembelajaran. Topik: Menganalisis Teori Belajar Kognitif dan Sosial Kognitif dalam Desain Teknologi Pendidikan. Pengampu Dosen Senior Teknologi Pendidikan.";
+                    const utterance = new SpeechSynthesisUtterance(text);
+                    utterance.lang = 'id-ID';
+                    utterance.onend = () => {
+                        btnText.innerText = "Dengarkan Narasi";
+                        wave.classList.add('hidden');
+                    };
+                    window.speechSynthesis.speak(utterance);
+                    btnText.innerText = "Menghentikan Audio";
+                    wave.classList.remove('hidden');
+                }
+            } else {
+                showToast("Fitur Audio TTS tidak didukung browser ini.");
+            }
+        }
+
+        /* UTILITY HELPERS */
+        function updateScoreDisplay() {
+            document.getElementById('scoreBadge').innerText = `Skor Modul: ${totalScore} Pts`;
+        }
+
+        function adjustFontSize(delta) {
+            const body = document.getElementById('materiTextBody');
+            const style = window.getComputedStyle(body).fontSize;
+            const currentSize = parseFloat(style);
+            body.style.fontSize = (currentSize + delta) + 'px';
+        }
+
+        function showToast(msg) {
+            const toast = document.createElement('div');
+            toast.className = "fixed bottom-5 right-5 bg-slate-900 text-white text-xs px-4 py-3 rounded-xl shadow-2xl z-50 transition transform duration-300";
+            toast.innerText = msg;
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 3000);
+        }
+    </script>
+</body>
+</html>
