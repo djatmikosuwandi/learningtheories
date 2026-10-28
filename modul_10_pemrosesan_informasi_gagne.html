@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Modul 10 Teori Belajar dan Pembelajaran: pemrosesan informasi dan teori belajar Gagné.">
+<title>Modul 10 | Teori Belajar dan Pembelajaran</title>
+<style>
+:root{--navy:#16385f;--blue:#2878cf;--sky:#eaf4ff;--ink:#20334b;--muted:#62738a;--line:#d8e4f1;--bg:#f4f8fc;--green:#17875c;--purple:#7953c7;--orange:#d78319}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);line-height:1.65}
+.topbar{background:linear-gradient(110deg,#143353,#2b5078);color:#fff;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px;position:sticky;top:0;z-index:20;box-shadow:0 3px 14px #18365425}.brand{font-weight:750;font-size:1.05rem;display:flex;align-items:center;gap:10px}.brand-mark{font-size:1.5rem}.toplinks{display:flex;gap:18px;flex-wrap:wrap}.toplinks a{color:#eaf3ff;text-decoration:none;font-size:.88rem}.toplinks a:hover{text-decoration:underline}
+.layout{display:grid;grid-template-columns:250px minmax(0,1fr);max-width:1600px;margin:auto;min-height:calc(100vh - 60px)}.sidebar{background:#fff;border-right:1px solid var(--line);padding:22px 16px;align-self:stretch}.back{font-size:.83rem;color:var(--muted);text-decoration:none}.module-label{font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:22px 0 6px}.sidebar h3{font-size:1rem;line-height:1.4;margin:0 0 14px}.navlist{list-style:none;padding:0;margin:0}.navlist a{display:block;padding:9px 11px;margin:3px 0;border-radius:8px;text-decoration:none;color:#40536c;font-size:.9rem}.navlist a:hover,.navlist a.active{background:#e7f1ff;color:#1558a1;font-weight:700}
+main{padding:22px;min-width:0}.hero{background:linear-gradient(120deg,#e6f2ff,#f7fbff);border:1px solid #d7e8fb;border-radius:16px;padding:26px;display:grid;grid-template-columns:1.3fr .7fr;gap:20px;align-items:center;margin-bottom:18px}.eyebrow{color:#1b68b8;font-size:.82rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase}.hero h1{font-size:clamp(1.6rem,2.5vw,2.45rem);line-height:1.2;margin:8px 0 14px;color:#15385f}.hero p{margin:0;color:#526b85}.hero-art{background:#fff;border:1px solid #dbeafa;border-radius:14px;padding:16px;text-align:center}.flowmini{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap}.flowmini span{padding:10px 12px;border-radius:9px;background:#dcecff;color:#174b82;font-size:.8rem;font-weight:700}.flowmini span:nth-of-type(2){background:#d8f4e7;color:#176443}.flowmini span:nth-of-type(3){background:#eee4ff;color:#5e3b9d}.metadata{display:flex;gap:18px;flex-wrap:wrap;margin-top:18px;color:#405d7b;font-size:.88rem}.meta{display:flex;gap:7px;align-items:center}
+.contentgrid{display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:18px;align-items:start}.panel{background:#fff;border:1px solid var(--line);border-radius:13px;padding:21px;margin-bottom:16px;box-shadow:0 3px 12px #24486b05}.panel h2{font-size:1.3rem;color:#163b66;margin:0 0 12px;line-height:1.35}.panel h3{font-size:1.02rem;color:#1c4c7c;margin:20px 0 8px}.panel h4{margin:10px 0 5px}.panel p{margin:8px 0}.lead{font-size:1rem;color:#435a73}.outcomes{padding-left:20px}.outcomes li{padding:5px 0}
+.concept{display:grid;gap:10px;text-align:center}.concept-root,.concept-bottom{border:1px solid #7db7ff;background:#e9f4ff;border-radius:10px;padding:13px;font-weight:750;color:#184d83}.memory-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.memory{border-radius:10px;padding:15px 12px;border:1px solid;text-align:center}.memory strong{display:block;margin:5px 0}.memory p{font-size:.86rem;margin:0}.sensory{background:#e8f8ff;border-color:#70c8ef}.working{background:#e9faed;border-color:#82d5a0}.longterm{background:#f4edff;border-color:#c1a2f1}.concept-bottom{background:#e1f7ed;border-color:#87d8b4;color:#176544}.arrow{text-align:center;font-size:1.4rem;color:#4787c6;line-height:1}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.smallcard{border:1px solid var(--line);border-radius:11px;padding:14px;background:#fbfdff}.smallcard .symbol{font-size:1.4rem}.smallcard h4{font-size:.95rem;color:#244b77}.smallcard p{font-size:.88rem;color:#52667c}
+table{border-collapse:collapse;width:100%;font-size:.9rem;margin:10px 0 18px}th,td{border:1px solid #d6e4f1;padding:9px 10px;text-align:left;vertical-align:top}th{background:#eaf4ff;color:#214f7e}tbody tr:nth-child(even){background:#f9fbfe}
+.callout{border-left:4px solid #3a89d4;background:#eff7ff;padding:13px 15px;border-radius:0 9px 9px 0;margin:14px 0}.callout.warn{border-left-color:#d78319;background:#fff7e9}.event-list{display:grid;grid-template-columns:1fr 1fr;gap:10px}.event{border:1px solid var(--line);border-radius:10px;padding:13px}.event .num{display:inline-grid;place-items:center;width:29px;height:29px;border-radius:50%;background:#e0efff;color:#155ba3;font-weight:800;margin-right:7px}.event p{font-size:.89rem;color:#586b80}.casebox{background:#f6faff;border:1px solid #d8e7f8;padding:18px;border-radius:12px}.question{margin:14px 0}.question label{font-weight:700;display:block;margin-bottom:6px}.question textarea{width:100%;min-height:86px;padding:10px;border:1px solid #c7d7e7;border-radius:8px;font:inherit;resize:vertical}.button{background:#246fbd;color:#fff;border:0;border-radius:8px;padding:10px 16px;font-weight:750;cursor:pointer}.button:hover{background:#175a9e}.answer{display:none;background:#eaf8ef;border:1px solid #bce6ca;border-radius:9px;padding:14px;margin-top:14px}.answer.show{display:block}.sidepanel{padding:17px}.sidepanel h3{margin:0 0 9px}.sidepanel ul,.sidepanel ol{padding-left:20px;margin:8px 0}.sidepanel li{font-size:.88rem;margin:5px 0}.mini-step{display:grid;grid-template-columns:26px 1fr;gap:8px;margin:13px 0}.mini-step .n{width:25px;height:25px;border-radius:50%;background:#2f83d5;color:#fff;display:grid;place-items:center;font-weight:800;font-size:.8rem}.mini-step strong{display:block;font-size:.9rem}.mini-step p{font-size:.84rem;color:#5c6f84;margin:2px 0}.rubric td:last-child,.rubric th:last-child{text-align:right}.references li{margin:9px 0;overflow-wrap:anywhere}.footer{background:#183b60;color:#dce9f7;padding:17px 24px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-size:.82rem}.progress-wrap{height:5px;background:#dce8f4}.progress{height:5px;width:0;background:#52b5e8;transition:width .2s}
+@media(max-width:1100px){.layout{grid-template-columns:210px minmax(0,1fr)}.contentgrid{grid-template-columns:1fr}.rightcol{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.rightcol .panel{margin:0}.hero{grid-template-columns:1fr}.hero-art{display:none}}
+@media(max-width:720px){.topbar{padding:12px 15px;align-items:flex-start;flex-direction:column}.toplinks{gap:12px}.layout{display:block}.sidebar{border-right:0;border-bottom:1px solid var(--line);padding:12px 14px}.sidebar .module-label,.sidebar h3,.back{display:none}.navlist{display:flex;overflow:auto;gap:5px}.navlist a{white-space:nowrap;font-size:.82rem}.navlist li{flex-shrink:0}main{padding:13px}.hero{padding:19px}.panel{padding:16px}.memory-row,.cards,.event-list{grid-template-columns:1fr}.rightcol{display:block}.rightcol .panel{margin-bottom:12px}table{font-size:.8rem;display:block;overflow-x:auto;white-space:normal}.metadata{gap:9px}.footer{padding:15px}}
+@media print{.topbar,.sidebar,.button,.progress-wrap{display:none!important}.layout{display:block}main{padding:0}.contentgrid{display:block}.hero,.panel{break-inside:avoid;box-shadow:none}.rightcol{display:block}.footer{background:white;color:#222}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><span class="brand-mark">🎓</span> Teori Belajar dan Pembelajaran</div>
+  <nav class="toplinks" aria-label="Navigasi utama"><a href="#beranda">Beranda</a><a href="#modul">Modul</a><a href="#studi-kasus">Studi Kasus</a><a href="#evaluasi">Evaluasi</a></nav>
+</header>
+<div class="progress-wrap"><div class="progress" id="progress"></div></div>
+<div class="layout" id="beranda">
+  <aside class="sidebar">
+    <a class="back" href="#beranda">← Kembali ke awal modul</a>
+    <div class="module-label">Modul perkuliahan</div>
+    <h3>Modul 10<br>Landasan Pemrosesan Informasi dan Teori Belajar Gagné</h3>
+    <ul class="navlist">
+      <li><a class="active" href="#pendahuluan">1. Pendahuluan</a></li>
+      <li><a href="#pemrosesan">2. Pemrosesan Informasi</a></li>
+      <li><a href="#desain">3. Desain Materi</a></li>
+      <li><a href="#gagne">4. Teori Belajar Gagné</a></li>
+      <li><a href="#studi-kasus">5. Studi Kasus</a></li>
+      <li><a href="#evaluasi">6. Evaluasi</a></li>
+      <li><a href="#rangkuman">7. Rangkuman</a></li>
+      <li><a href="#referensi">8. Referensi</a></li>
+    </ul>
+  </aside>
+  <main id="modul">
+    <section class="hero">
+      <div>
+        <div class="eyebrow">Modul 10 · Pertemuan ke-10</div>
+        <h1>Landasan Pemrosesan Informasi dalam Pembelajaran dan Teori Belajar Gagné</h1>
+        <p>Memahami bagaimana peserta didik menerima, mengolah, menyimpan, dan menggunakan informasi serta bagaimana merancang pembelajaran yang mendukung proses tersebut.</p>
+        <div class="metadata">
+          <div class="meta">📘 <span>Mata Kuliah: Teori Belajar dan Pembelajaran</span></div>
+          <div class="meta">🎯 <span>Fokus: Psikologi kognitif dan desain pembelajaran</span></div>
+        </div>
+      </div>
+      <div class="hero-art">
+        <div style="font-size:3.4rem">🧠</div>
+        <div class="flowmini"><span>Memori Sensorik</span> → <span>Memori Kerja</span> → <span>Memori Jangka Panjang</span></div>
+        <p style="font-size:.85rem;color:#61758b;margin-top:14px">Informasi → Pengolahan → Pengetahuan</p>
+      </div>
+    </section>
+    <div class="contentgrid">
+      <div class="maincol">
+        <section class="panel" id="pendahuluan">
+          <h2>A. Deskripsi Modul</h2>
+          <p class="lead">Modul pertemuan ke-10 membahas bagaimana peserta didik menerima, memperhatikan, mengolah, menyimpan, dan mengambil kembali informasi selama proses belajar. Pembahasan dilanjutkan dengan penerapan prinsip pemrosesan informasi dalam merancang materi pembelajaran serta analisis teori belajar Robert M. Gagné.</p>
+          <p>Materi ini penting bagi mahasiswa Teknologi Pendidikan karena keberhasilan pembelajaran tidak hanya ditentukan oleh banyaknya informasi yang disampaikan dosen, tetapi juga oleh bagaimana informasi disusun, disajikan, diproses, dan dihubungkan dengan pengetahuan yang telah dimiliki peserta didik.</p>
+          <h3>Capaian Pembelajaran</h3>
+          <ol class="outcomes">
+            <li>Menganalisis komponen-komponen dasar pemrosesan informasi dalam belajar.</li>
+            <li>Mengaplikasikan prinsip pemrosesan informasi dalam desain materi pembelajaran.</li>
+            <li>Menganalisis konsep dan karakteristik teori belajar Gagné sebagai integrasi perspektif kognitif dan pemrosesan informasi.</li>
+          </ol>
+        </section>
+        <section class="panel">
+          <h2>B. Peta Konsep</h2>
+          <div class="concept">
+            <div class="concept-root">Teori Pemrosesan Informasi<br><small>Bagaimana informasi diproses oleh sistem kognitif manusia</small></div>
+            <div class="arrow">↓</div>
+            <div class="memory-row">
+              <div class="memory sensory"><div style="font-size:1.6rem">👁️</div><strong>Memori Sensorik</strong><p>Menerima rangsangan</p></div>
+              <div class="memory working"><div style="font-size:1.6rem">🧠</div><strong>Memori Kerja</strong><p>Mengolah informasi</p></div>
+              <div class="memory longterm"><div style="font-size:1.6rem">🗄️</div><strong>Memori Jangka Panjang</strong><p>Menyimpan pengetahuan</p></div>
+            </div>
+            <div class="arrow">↓</div>
+            <div class="concept-bottom">Desain Pembelajaran<br><small>Mengatur perhatian, organisasi materi, latihan, umpan balik, dan pengambilan kembali informasi</small></div>
+            <div class="arrow">↓</div>
+            <div class="concept-root" style="background:#fff2dc;border-color:#efb65b;color:#87510d">Teori Belajar Gagné<br><small>Kondisi belajar, sembilan peristiwa pembelajaran, dan hasil belajar</small></div>
+          </div>
+        </section>
+        <section class="panel" id="pemrosesan">
+          <h2>C. Konsep Dasar Pemrosesan Informasi dalam Belajar</h2>
+          <h3>1. Pengertian</h3>
+          <p>Teori pemrosesan informasi (<em>Information Processing Theory</em>) merupakan pendekatan psikologi kognitif yang menjelaskan bagaimana manusia menerima informasi dari lingkungan, memberi perhatian terhadap informasi tertentu, mengolahnya, menyimpannya dalam memori, dan mengambilnya kembali ketika diperlukan.</p>
+          <p>Analogi sistem pemrosesan informasi membantu menjelaskan aktivitas mental manusia, tetapi pikiran manusia tidak sepenuhnya sama dengan komputer. Belajar juga dipengaruhi oleh emosi, motivasi, pengalaman, konteks sosial, dan pengetahuan sebelumnya.</p>
+          <h3>2. Komponen utama pemrosesan informasi</h3>
+          <div class="cards">
+            <article class="smallcard"><div class="symbol">👁️</div><h4>Memori Sensorik</h4><p>Menerima rangsangan melalui indra. Informasi bertahan sangat singkat; perhatian menentukan informasi mana yang diproses lebih lanjut.</p><p><b>Implikasi:</b> gunakan stimulus relevan dan hindari dekorasi yang mengalihkan perhatian.</p></article>
+            <article class="smallcard"><div class="symbol">🧠</div><h4>Memori Kerja</h4><p>Menampung dan memanipulasi informasi yang sedang digunakan secara sadar. Kapasitasnya terbatas.</p><p><b>Implikasi:</b> pecah materi menjadi bagian kecil, gunakan contoh bertahap dan visual pendukung.</p></article>
+            <article class="smallcard"><div class="symbol">🗄️</div><h4>Memori Jangka Panjang</h4><p>Menyimpan pengetahuan, pengalaman, konsep, prosedur, dan keterampilan dalam jangka waktu relatif panjang.</p><p><b>Implikasi:</b> hubungkan materi baru dengan pengetahuan awal dan lakukan latihan pengambilan kembali.</p></article>
+          </div>
+          <h3>3. Proses kognitif yang menghubungkan komponen memori</h3>
+          <table>
+            <thead><tr><th>Proses</th><th>Penjelasan</th><th>Contoh pembelajaran</th></tr></thead>
+            <tbody>
+              <tr><td>Perhatian (<em>attention</em>)</td><td>Memilih informasi relevan untuk diproses.</td><td>Siswa memperhatikan bagian penting pada diagram.</td></tr>
+              <tr><td>Persepsi (<em>perception</em>)</td><td>Menafsirkan rangsangan berdasarkan karakteristik dan pengetahuan.</td><td>Siswa mengenali karakteristik geometri.</td></tr>
+              <tr><td>Pengodean (<em>encoding</em>)</td><td>Mengubah informasi menjadi representasi mental.</td><td>Menghubungkan rumus dengan gambar dan penjelasan verbal.</td></tr>
+              <tr><td>Elaborasi (<em>elaboration</em>)</td><td>Menghubungkan informasi baru dengan pengetahuan yang dimiliki.</td><td>Menjelaskan konsep menggunakan contoh sehari-hari.</td></tr>
+              <tr><td>Pengorganisasian</td><td>Menyusun informasi menjadi pola yang bermakna.</td><td>Membuat peta konsep.</td></tr>
+              <tr><td>Pengambilan kembali (<em>retrieval</em>)</td><td>Mengakses pengetahuan yang tersimpan.</td><td>Menjawab pertanyaan tanpa melihat catatan.</td></tr>
+            </tbody>
+          </table>
+          <div class="callout"><b>Catatan konseptual:</b> ketiga sistem memori bukan kotak yang sepenuhnya terpisah. Pengambilan kembali membawa informasi ke memori kerja untuk digunakan kembali.</div>
+          <h3>4. Prinsip penting pemrosesan informasi</h3>
+          <div class="cards">
+            <article class="smallcard"><div class="symbol">🧩</div><h4><em>Chunking</em></h4><p>Mengelompokkan informasi menjadi unit bermakna, misalnya mengajarkan rumus setelah konsep panjang dan lebar dipahami.</p></article>
+            <article class="smallcard"><div class="symbol">🔗</div><h4>Elaborasi dan organisasi</h4><p>Menghubungkan konsep baru dengan pengalaman, analogi, contoh, atau peta konsep.</p></article>
+            <article class="smallcard"><div class="symbol">🔁</div><h4>Latihan pengambilan kembali</h4><p>Mengingat dan menjelaskan materi tanpa selalu melihat sumber belajar.</p></article>
+            <article class="smallcard"><div class="symbol">⏱️</div><h4>Latihan bersela</h4><p>Mendistribusikan latihan dalam beberapa kesempatan, bukan hanya satu sesi intensif.</p></article>
+          </div>
+          <h3>5. Perhatian, pengetahuan awal, dan metakognisi</h3>
+          <ul>
+            <li><b>Perhatian:</b> membantu peserta didik fokus pada informasi yang relevan.</li>
+            <li><b>Pengetahuan awal:</b> mempermudah pemahaman materi baru, tetapi miskonsepsi yang belum diperbaiki dapat menghambat belajar.</li>
+            <li><b>Metakognisi:</b> kemampuan merencanakan, memantau, dan mengevaluasi proses berpikir sendiri.</li>
+          </ul>
+        </section>
+        <section class="panel" id="desain">
+          <h2>D. Penerapan dalam Desain Materi Pembelajaran</h2>
+          <h3>1. Prinsip desain materi pembelajaran</h3>
+          <table>
+            <thead><tr><th>Prinsip</th><th>Penerapan</th><th>Hal yang dihindari</th></tr></thead>
+            <tbody>
+              <tr><td>Mengarahkan perhatian</td><td>Judul, penanda visual, pertanyaan pemantik.</td><td>Terlalu banyak warna, animasi, atau dekorasi.</td></tr>
+              <tr><td>Mengurangi beban kognitif yang tidak perlu</td><td>Bahasa jelas, tata letak konsisten, informasi berdekatan.</td><td>Teks panjang tanpa struktur.</td></tr>
+              <tr><td>Mengelola kompleksitas</td><td>Tahapan, contoh kerja, dukungan bagi pemula.</td><td>Masalah kompleks tanpa panduan.</td></tr>
+              <tr><td>Mendukung pengodean</td><td>Visual relevan dipadukan dengan penjelasan verbal.</td><td>Visual dekoratif yang tidak mendukung konsep.</td></tr>
+              <tr><td>Memperkuat penyimpanan</td><td>Latihan bervariasi, kuis, pengulangan bersela.</td><td>Hanya membaca berulang kali.</td></tr>
+              <tr><td>Memfasilitasi transfer</td><td>Masalah baru yang menuntut penerapan konsep.</td><td>Latihan yang hanya meniru contoh identik.</td></tr>
+            </tbody>
+          </table>
+          <h3>2. Contoh desain: luas persegi panjang untuk kelas IV</h3>
+          <div class="event-list">
+            <article class="event"><b>1. Aktivasi pengetahuan awal</b><p>Guru menunjukkan susunan ubin dan bertanya bagaimana menghitung jumlahnya tanpa menghitung satu per satu.</p></article>
+            <article class="event"><b>2. Penyajian informasi</b><p>Siswa mengamati kisi dengan 5 kolom dan 3 baris. Jumlah persegi satuan adalah 5 × 3 = 15.</p></article>
+            <article class="event"><b>3. Pengorganisasian konsep</b><p>Guru menghubungkan jumlah kolom dengan panjang dan baris dengan lebar. Luas = panjang × lebar.</p></article>
+            <article class="event"><b>4. Latihan dan pengambilan kembali</b><p>Siswa mengerjakan soal baru tanpa langsung melihat rumus dan menjelaskan alasan penggunaan perkalian.</p></article>
+          </div>
+          <h3>3. Hubungan dengan teknologi pendidikan</h3>
+          <ul>
+            <li><b>LMS:</b> membagi materi menjadi unit kecil, menyediakan kuis formatif dan umpan balik.</li>
+            <li><b>Video:</b> mengatur segmen, menggunakan penanda visual, dan memberi jeda untuk refleksi.</li>
+            <li><b>Media interaktif:</b> memungkinkan siswa memanipulasi objek dan menguji dugaan.</li>
+            <li><b>GenAI:</b> membantu membuat contoh, analogi, soal latihan, atau penjelasan alternatif.</li>
+          </ul>
+          <div class="callout warn"><b>Perhatian:</b> teknologi tidak otomatis meningkatkan kualitas belajar. Keluaran AI perlu diperiksa akurasi, kesesuaian perkembangan peserta didik, tingkat kesulitan, dan potensi miskonsepsinya.</div>
+        </section>
+        <section class="panel" id="gagne">
+          <h2>E. Teori Belajar Robert M. Gagné</h2>
+          <h3>1. Konsep dasar</h3>
+          <p>Robert M. Gagné menjelaskan bahwa pembelajaran dipengaruhi oleh kondisi internal peserta didik dan kondisi eksternal yang dirancang oleh pendidik. Kondisi internal meliputi pengetahuan awal, kemampuan, strategi kognitif, dan keterampilan. Kondisi eksternal meliputi stimulus, instruksi, aktivitas belajar, bimbingan, latihan, serta umpan balik.</p>
+          <p>Teori Gagné berhubungan erat dengan pemrosesan informasi karena menjelaskan bagaimana peristiwa pembelajaran dapat mendukung proses mental peserta didik. Kerangka ini membantu pendidik merancang kondisi yang mendukung pencapaian hasil belajar tertentu.</p>
+          <h3>2. Lima kategori hasil belajar menurut Gagné</h3>
+          <table>
+            <thead><tr><th>Kategori</th><th>Makna</th><th>Contoh</th></tr></thead>
+            <tbody>
+              <tr><td>Informasi verbal</td><td>Kemampuan menyatakan fakta atau pengetahuan.</td><td>Menjelaskan definisi luas.</td></tr>
+              <tr><td>Keterampilan intelektual</td><td>Menggunakan konsep dan aturan untuk menyelesaikan masalah.</td><td>Menghitung luas persegi panjang.</td></tr>
+              <tr><td>Strategi kognitif</td><td>Mengatur proses berpikir dan belajar sendiri.</td><td>Memilih strategi penyelesaian soal.</td></tr>
+              <tr><td>Keterampilan motorik</td><td>Melakukan gerakan terkoordinasi.</td><td>Menggunakan alat ukur secara tepat.</td></tr>
+              <tr><td>Sikap</td><td>Kecenderungan memilih tindakan atau menunjukkan respons tertentu.</td><td>Bersikap teliti dan bertanggung jawab.</td></tr>
+            </tbody>
+          </table>
+          <h3>3. Sembilan peristiwa pembelajaran (<em>Nine Events of Instruction</em>)</h3>
+          <div class="event-list">
+            <article class="event"><span class="num">1</span><b>Menarik perhatian</b><p>Mengarahkan perhatian pada informasi relevan. <br><em>Contoh:</em> menampilkan dua persegi panjang berbeda.</p></article>
+            <article class="event"><span class="num">2</span><b>Menyampaikan tujuan</b><p>Membantu siswa memahami hasil yang diharapkan. <br><em>Contoh:</em> menjelaskan target menghitung luas.</p></article>
+            <article class="event"><span class="num">3</span><b>Mengaktifkan pengetahuan awal</b><p>Mengingatkan konsep yang relevan. <br><em>Contoh:</em> mengulas perkalian dan satuan persegi.</p></article>
+            <article class="event"><span class="num">4</span><b>Menyajikan materi</b><p>Menyampaikan informasi baru secara terstruktur. <br><em>Contoh:</em> menampilkan kisi dan rumus.</p></article>
+            <article class="event"><span class="num">5</span><b>Memberikan bimbingan</b><p>Membantu siswa memahami dan mengorganisasi informasi. <br><em>Contoh:</em> memberi contoh kerja bertahap.</p></article>
+            <article class="event"><span class="num">6</span><b>Memunculkan kinerja</b><p>Memberi kesempatan menunjukkan pemahaman. <br><em>Contoh:</em> latihan menghitung luas.</p></article>
+            <article class="event"><span class="num">7</span><b>Memberikan umpan balik</b><p>Memberi informasi tentang ketepatan dan perbaikan. <br><em>Contoh:</em> mengoreksi satuan atau operasi.</p></article>
+            <article class="event"><span class="num">8</span><b>Menilai kinerja</b><p>Mengukur ketercapaian tujuan. <br><em>Contoh:</em> soal individu tanpa bantuan.</p></article>
+            <article class="event"><span class="num">9</span><b>Meningkatkan retensi dan transfer</b><p>Mendukung ingatan jangka panjang dan penerapan. <br><em>Contoh:</em> menghitung luas lantai atau bidang lain.</p></article>
+          </div>
+          <div class="callout">Sembilan peristiwa merupakan kerangka desain, bukan prosedur kaku. Urutannya dapat disesuaikan dengan tujuan, karakteristik peserta didik, dan konteks pembelajaran.</div>
+          <h3>4. Integrasi Gagné dan pemrosesan informasi</h3>
+          <div class="cards">
+            <article class="smallcard"><h4>Komponen 1 · Kondisi internal</h4><p>Pengetahuan awal, kemampuan, motivasi, strategi kognitif, dan keterampilan yang telah dimiliki peserta didik.</p></article>
+            <article class="smallcard"><h4>Komponen 2 · Kondisi eksternal</h4><p>Stimulus, penyajian materi, bimbingan, latihan, umpan balik, dan penilaian yang dirancang guru.</p></article>
+            <article class="smallcard"><h4>Komponen 3 · Proses dan hasil</h4><p>Perhatian, pengodean, pengorganisasian, penyimpanan, pengambilan kembali, serta transfer pengetahuan.</p></article>
+          </div>
+          <h3>5. Karakteristik teori Gagné</h3>
+          <ol>
+            <li><b>Berorientasi pada tujuan:</b> tujuan menentukan strategi dan penilaian.</li>
+            <li><b>Memperhatikan kondisi belajar:</b> strategi disesuaikan dengan tugas dan kemampuan awal.</li>
+            <li><b>Sistematis:</b> kegiatan dirancang secara logis dan saling mendukung.</li>
+            <li><b>Memperhatikan proses kognitif:</b> perhatian, ingatan, pengodean, dan pengambilan kembali menjadi pertimbangan.</li>
+            <li><b>Menggunakan umpan balik:</b> peserta didik memperoleh informasi untuk memperbaiki kinerja.</li>
+            <li><b>Berorientasi pada retensi dan transfer:</b> pengetahuan dipertahankan dan diterapkan dalam situasi baru.</li>
+          </ol>
+        </section>
+        <section class="panel" id="studi-kasus">
+          <h2>F. Studi Kasus: Merancang Pembelajaran Matematika Berbantuan GenAI</h2>
+          <div class="casebox">
+            <p>Seorang guru kelas IV mengajarkan konsep luas dan keliling persegi panjang. Sebagian siswa dapat menghafal rumus, tetapi masih kesulitan membedakan luas dan keliling ketika mengerjakan soal cerita.</p>
+            <p>Guru berencana menggunakan media interaktif berbantuan GenAI untuk menampilkan diagram, memberikan petunjuk, menghasilkan soal dengan tingkat kesulitan berbeda, dan menyediakan umpan balik. Guru tetap memeriksa jawaban AI dan memfasilitasi diskusi.</p>
+            <div class="question"><label for="q1">1. Identifikasi komponen pemrosesan informasi yang relevan.</label><textarea id="q1" placeholder="Contoh: perhatian, memori kerja, memori jangka panjang..."></textarea></div>
+            <div class="question"><label for="q2">2. Pilih tiga peristiwa Gagné yang penting untuk mengatasi masalah tersebut. Jelaskan alasan Anda.</label><textarea id="q2" placeholder="Sebutkan peristiwa dan alasan pemilihannya..."></textarea></div>
+            <div class="question"><label for="q3">3. Rancang satu aktivitas berbantuan GenAI yang tidak menambah beban kognitif yang tidak perlu.</label><textarea id="q3" placeholder="Jelaskan aktivitas, media, dan umpan balik..."></textarea></div>
+            <button class="button" type="button" id="showAnswers">Lihat panduan jawaban</button>
+            <div class="answer" id="answers"><h4>Pedoman analisis</h4><p><b>1. Pemrosesan informasi:</b> perhatian diperlukan untuk fokus pada perbedaan luas dan keliling; memori kerja digunakan untuk membandingkan informasi dan mengerjakan soal; memori jangka panjang membantu menghubungkan konsep dengan perkalian dan satuan.</p><p><b>2. Peristiwa Gagné:</b> alternatif yang masuk akal antara lain mengaktifkan pengetahuan awal, memberikan bimbingan belajar, dan memberikan umpan balik. Pilihan lain dapat diterima jika argumentasinya relevan.</p><p><b>3. Aktivitas GenAI:</b> siswa mengamati satu diagram, menjelaskan perbedaan luas dan keliling, lalu menerima satu petunjuk atau soal adaptif. Guru memeriksa keluaran AI dan meminta siswa menjelaskan alasan jawabannya.</p><p><em>Penilaian berfokus pada ketepatan konsep, hubungan teori dengan keputusan desain, dan kelayakan aktivitas.</em></p></div>
+          </div>
+        </section>
+        <section class="panel" id="evaluasi">
+          <h2>G. Evaluasi Pembelajaran</h2>
+          <p>Jawablah pertanyaan berikut secara mandiri.</p>
+          <ol>
+            <li>Jelaskan perbedaan memori sensorik, memori kerja, dan memori jangka panjang beserta contoh penerapannya.</li>
+            <li>Mengapa kapasitas memori kerja perlu dipertimbangkan ketika guru merancang materi digital?</li>
+            <li>Analisis dua prinsip pemrosesan informasi yang dapat memperbaiki materi presentasi yang terlalu padat.</li>
+            <li>Jelaskan lima kategori hasil belajar menurut Gagné dan berikan contoh masing-masing.</li>
+            <li>Uraikan sembilan peristiwa pembelajaran Gagné serta hubungannya dengan proses kognitif.</li>
+            <li>Rancang urutan pembelajaran singkat untuk satu topik dengan mengintegrasikan pemrosesan informasi dan teori Gagné.</li>
+          </ol>
+          <h3>Rubrik penilaian</h3>
+          <table class="rubric">
+            <thead><tr><th>Aspek</th><th>Bobot</th></tr></thead>
+            <tbody><tr><td>Ketepatan pemahaman konsep</td><td>30%</td></tr><tr><td>Kemampuan menganalisis teori</td><td>25%</td></tr><tr><td>Penerapan teori dalam desain pembelajaran</td><td>30%</td></tr><tr><td>Kejelasan argumentasi dan contoh</td><td>15%</td></tr><tr><th>Total</th><th>100%</th></tr></tbody>
+          </table>
+        </section>
+        <section class="panel" id="rangkuman">
+          <h2>H. Rangkuman</h2>
+          <p>Teori pemrosesan informasi menjelaskan bagaimana peserta didik menerima, memperhatikan, mengolah, menyimpan, dan mengambil kembali informasi. Memori sensorik, memori kerja, dan memori jangka panjang merupakan komponen penting untuk memahami proses tersebut. Pengorganisasian materi, elaborasi, latihan pengambilan kembali, dan latihan bersela dapat diterapkan untuk mendukung pembelajaran.</p>
+          <p>Teori Gagné menekankan hubungan kondisi internal peserta didik, kondisi eksternal pembelajaran, dan hasil belajar. Sembilan peristiwa pembelajaran memberikan kerangka sistematis untuk merancang kegiatan mulai dari menarik perhatian hingga mendukung retensi dan transfer.</p>
+          <p>Dalam Teknologi Pendidikan, kedua pendekatan dapat digunakan untuk merancang materi digital, LMS, media interaktif, dan pembelajaran berbantuan GenAI. Efektivitas desain perlu dievaluasi berdasarkan bukti belajar, bukan semata-mata daya tarik media atau penggunaan teknologi.</p>
+          <div class="callout"><b>Refleksi penutup:</b> Apakah materi yang menarik secara visual selalu menghasilkan pembelajaran yang efektif? Hubungkan jawaban Anda dengan perhatian, beban kognitif, pengetahuan awal, dan retensi.</div>
+        </section>
+        <section class="panel references" id="referensi">
+          <h2>I. Referensi Utama</h2>
+          <ol>
+            <li>Atkinson, R. C., &amp; Shiffrin, R. M. (1968). Human memory: A proposed system and its control processes. Dalam K. W. Spence &amp; J. T. Spence (Eds.), <em>The Psychology of Learning and Motivation</em> (Vol. 2, hlm. 89–195). Academic Press.</li>
+            <li>Baddeley, A. (1992). Working memory. <em>Science, 255</em>(5044), 556–559. <a href="https://doi.org/10.1126/science.1736359" target="_blank" rel="noopener">https://doi.org/10.1126/science.1736359</a></li>
+            <li>Gagné, R. M. (1985). <em>The Conditions of Learning and Theory of Instruction</em> (4th ed.). Holt, Rinehart and Winston.</li>
+            <li>Gagné, R. M., Briggs, L. J., &amp; Wager, W. W. (1992). <em>Principles of Instructional Design</em> (4th ed.). Harcourt Brace Jovanovich.</li>
+            <li>Mayer, R. E. (2021). <em>Multimedia Learning</em> (3rd ed.). Cambridge University Press.</li>
+            <li>Sweller, J., Ayres, P., &amp; Kalyuga, S. (2011). <em>Cognitive Load Theory</em>. Springer. <a href="https://doi.org/10.1007/978-1-4419-8126-4" target="_blank" rel="noopener">https://doi.org/10.1007/978-1-4419-8126-4</a></li>
+          </ol>
+        </section>
+      </div>
+      <aside class="rightcol">
+        <section class="panel sidepanel">
+          <h3>🎯 Capaian Pembelajaran</h3>
+          <p style="font-size:.88rem;color:#5b6e82">Setelah mengikuti perkuliahan, mahasiswa diharapkan mampu:</p>
+          <ol class="outcomes"><li>Menganalisis komponen pemrosesan informasi.</li><li>Menerapkan prinsip pemrosesan informasi dalam desain materi.</li><li>Menganalisis teori belajar Gagné.</li></ol>
+        </section>
+        <section class="panel sidepanel">
+          <h3>📐 Contoh Desain: Luas Persegi Panjang</h3>
+          <div class="mini-step"><div class="n">1</div><div><strong>Aktivasi pengetahuan awal</strong><p>Tunjukkan ubin persegi panjang; tanyakan cara menghitung tanpa menghitung satu per satu.</p></div></div>
+          <div class="mini-step"><div class="n">2</div><div><strong>Penyajian informasi</strong><p>Amati 5 kolom dan 3 baris. Temukan 5 × 3 = 15.</p></div></div>
+          <div class="mini-step"><div class="n">3</div><div><strong>Pengorganisasian konsep</strong><p>Hubungkan panjang dan lebar. Rumus: L = p × l.</p></div></div>
+          <div class="mini-step"><div class="n">4</div><div><strong>Latihan dan pengambilan kembali</strong><p>Kerjakan soal baru dan jelaskan alasan penggunaan rumus.</p></div></div>
+        </section>
+        <section class="panel sidepanel">
+          <h3>💻 Teknologi Pendidikan</h3>
+          <ul><li><b>LMS:</b> unit kecil, kuis, umpan balik.</li><li><b>Video:</b> segmen, penanda visual.</li><li><b>Media interaktif:</b> manipulasi objek dan uji dugaan.</li><li><b>GenAI:</b> contoh, analogi, latihan adaptif.</li></ul>
+          <div class="callout warn" style="font-size:.86rem">Periksa akurasi, kesesuaian usia, tingkat kesulitan, dan potensi miskonsepsi.</div>
+        </section>
+        <section class="panel sidepanel">
+          <h3>🧠 Teori Belajar Gagné</h3>
+          <ol><li><b>Konsep dasar:</b> kondisi internal dan eksternal.</li><li><b>Lima kategori hasil:</b> informasi verbal, keterampilan intelektual, strategi kognitif, motorik, dan sikap.</li><li><b>Sembilan peristiwa:</b> perhatian hingga retensi dan transfer.</li><li><b>Integrasi:</b> kondisi belajar mendukung proses kognitif.</li><li><b>Karakteristik:</b> sistematis dan berorientasi tujuan.</li></ol>
+        </section>
+        <section class="panel sidepanel">
+          <h3>📝 Studi Kasus: GenAI</h3>
+          <p style="font-size:.88rem">Analisis berdasarkan teori pemrosesan informasi dan Gagné.</p>
+          <ol><li>Komponen pemrosesan informasi yang relevan.</li><li>Tiga peristiwa Gagné yang penting.</li><li>Rancangan aktivitas berbantuan GenAI.</li></ol>
+          <a href="#studi-kasus" class="button" style="display:inline-block;text-decoration:none;font-size:.85rem">Kerjakan studi kasus</a>
+        </section>
+        <section class="panel sidepanel">
+          <h3>📚 Referensi</h3>
+          <ul><li>Atkinson &amp; Shiffrin (1968)</li><li>Baddeley (1992)</li><li>Gagné (1985)</li><li>Gagné et al. (1992)</li><li>Mayer (2021)</li><li>Sweller et al. (2011)</li></ul>
+        </section>
+      </aside>
+    </div>
+  </main>
+</div>
+<footer class="footer"><span>Teori Belajar dan Pembelajaran | Modul 10</span><span>Belajar bukan hanya menerima informasi, tetapi membangun makna.</span></footer>
+<script>
+const progress = document.getElementById('progress');
+function updateProgress(){const doc=document.documentElement;const max=doc.scrollHeight-doc.clientHeight;progress.style.width=(max>0?(doc.scrollTop/max)*100:0)+'%';}
+window.addEventListener('scroll',updateProgress,{passive:true});updateProgress();
+document.getElementById('showAnswers').addEventListener('click',function(){const answers=document.getElementById('answers');answers.classList.toggle('show');this.textContent=answers.classList.contains('show')?'Sembunyikan panduan jawaban':'Lihat panduan jawaban';});
+const sections=[...document.querySelectorAll('main section[id]')];const navLinks=[...document.querySelectorAll('.navlist a')];
+if('IntersectionObserver'in window){const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){navLinks.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+entry.target.id));}})},{rootMargin:'-20% 0px -70% 0px'});sections.forEach(s=>observer.observe(s));}
+</script>
+</body>
+</html>
