@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sesi 12: Reflective Teaching & Desain Pembelajaran Berjenjang</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .tab-active { border-bottom: 3px solid #4F46E5; color: #4F46E5; font-weight: 600; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <!-- HEADER / HERO SECTION -->
+    <header class="bg-indigo-900 text-white py-12 px-6 shadow-lg">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+            <div>
+                <span class="bg-indigo-700 text-indigo-200 text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-full">
+                    Sesi 12 • Teori Belajar dan Pembelajaran
+                </span>
+                <h1 class="text-3xl md:text-4xl font-bold mt-3">Reflective Teaching & Desain Konstruktivisme Berjenjang</h1>
+                <p class="text-indigo-200 mt-2 text-sm md:text-base max-w-2xl">
+                    Menganalisis praktik reflektif pendidik dan mengkonstruksi Silabus/RPS berbasis karakteristik kognitif peserta didik pada berbagai jenjang pendidikan.
+                </p>
+            </div>
+            <div class="bg-indigo-800/80 p-4 rounded-xl border border-indigo-700 text-right w-full md:w-auto">
+                <p class="text-xs text-indigo-300">Pengampu Mata Kuliah:</p>
+                <p class="font-semibold text-white">Tim Dosen Senior</p>
+                <a href="#tugas-kelompok" class="inline-block mt-3 bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-bold px-4 py-2 rounded-lg transition-all shadow">
+                    <i class="fa-solid fa-users-rectangle mr-1"></i> Menuju Tugas Kelompok
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- NAVIGATION TABS -->
+    <nav class="bg-white border-b border-slate-200 sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto flex overflow-x-auto space-x-8 px-6">
+            <button onclick="switchTab('modul1')" id="btn-modul1" class="tab-button tab-active py-4 text-sm font-medium focus:outline-none whitespace-nowrap">
+                <i class="fa-solid fa-brain mr-2"></i>1. Reflective Teaching
+            </button>
+            <button onclick="switchTab('modul2')" id="btn-modul2" class="tab-button text-slate-500 hover:text-slate-700 py-4 text-sm font-medium focus:outline-none whitespace-nowrap">
+                <i class="fa-solid fa-layer-group mr-2"></i>2. Desain Berjenjang (PAUD–PT)
+            </button>
+            <button onclick="switchTab('tugas-kelompok')" id="btn-tugas-kelompok" class="tab-button text-slate-500 hover:text-slate-700 py-4 text-sm font-medium focus:outline-none whitespace-nowrap">
+                <i class="fa-solid fa-clipboard-list mr-2"></i>3. Tugas Studi Kasus & Silabus
+            </button>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="max-w-6xl mx-auto px-6 py-10">
+
+        <!-- MODUL 1: REFLECTIVE TEACHING -->
+        <section id="modul1" class="tab-content space-y-8">
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200">
+                <h2 class="text-2xl font-bold text-slate-900 mb-4 border-b pb-3">
+                    <i class="fa-solid fa-head-side-virus text-indigo-600 mr-2"></i> Reflektif dalam Praktik Instruksional (Reflective Teaching)
+                </h2>
+                <p class="text-slate-600 leading-relaxed mb-6">
+                    <em>Reflective teaching</em> adalah proses di mana pendidik secara aktif, konsisten, dan kritis menguji asumsi, keputusan instruksional, serta dampak tindakannya terhadap proses belajar siswa. Dalam pandangan konstruktivis, guru bukan sekadar "pelaksana kurikulum", melainkan seorang **peneliti tindakan kelas (practitioner researcher)**.
+                </p>
+
+                <div class="grid md:grid-cols-2 gap-6 my-6">
+                    <div class="bg-indigo-50 border-l-4 border-indigo-600 p-5 rounded-r-xl">
+                        <h3 class="font-bold text-indigo-900 text-lg mb-2">1. Reflection-in-Action (Donald Schön)</h3>
+                        <p class="text-slate-700 text-sm leading-relaxed">
+                            Kemampuan berpikir spontan dan melakukan penyesuaian taktis <strong>SAAT proses pengajaran sedang berlangsung</strong>. Terjadi ketika guru menangkap gestur kebingungan siswa, respon tak terduga, atau kebuntuan diskusi, lalu secara adaptif mengubah instrumen atau penjelasan di tempat.
+                        </p>
+                    </div>
+
+                    <div class="bg-emerald-50 border-l-4 border-emerald-600 p-5 rounded-r-xl">
+                        <h3 class="font-bold text-emerald-900 text-lg mb-2">2. Reflection-on-Action (Donald Schön)</h3>
+                        <p class="text-slate-700 text-sm leading-relaxed">
+                            Analisis kognitif dan evaluatif yang dilakukan <strong>SETELAH pembelajaran selesai</strong>. Guru mengkaji data kelas (karya siswa, suasana diskusi, hasil tes), mengidentifikasi miskonsepsi, dan merancang perbaikan untuk sesi berikutnya.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-amber-50 border border-amber-200 rounded-xl p-5 mt-6">
+                    <h4 class="font-bold text-amber-900 flex items-center gap-2">
+                        <i class="fa-solid fa-triangle-exclamation text-amber-600"></i> Peringatan Miskonsepsi Pembelajaran Konstruktivisme
+                    </h4>
+                    <p class="text-slate-700 text-sm mt-2 leading-relaxed">
+                        Banyak pendidik pemula mengartikan konstruktivisme sebagai <em>"unguided learning"</em> (membiarkan siswa belajar sendiri tanpa arahan). Refleksi kritis menunjukkan bahwa tanpa struktur <strong>Scaffolding</strong> dan batasan <strong>ZPD (Zone of Proximal Development)</strong> yang presisi, pembelajaran berorientasi konstruktivis akan menghasilkan kekacauan kognitif dan tingkat frustrasi siswa yang tinggi.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- MODUL 2: DESAIN BERJENJANG -->
+        <section id="modul2" class="tab-content hidden space-y-8">
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200">
+                <h2 class="text-2xl font-bold text-slate-900 mb-4 border-b pb-3">
+                    <i class="fa-solid fa-sitemap text-indigo-600 mr-2"></i> Differensiasi Konstruktivisme Berdasarkan Jenjang Pendidikan
+                </h2>
+                <p class="text-slate-600 leading-relaxed mb-6">
+                    Penerapan konstruktivisme tidak dapat disarat-ratakan (*one-size-fits-all*). Strategi instruksional harus disesuaikan dengan perkembangan kognitif (Piaget) dan konteks sosio-kultural peserta didik.
+                </p>
+
+                <div class="space-y-6">
+                    <!-- Jenjang SD -->
+                    <div class="border border-slate-200 rounded-xl p-6 hover:shadow-md transition-shadow bg-slate-50">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="bg-blue-100 text-blue-800 text-xs font-bold px-3 py-1 rounded-md uppercase">Jenjang Pendidikan Dasar (PAUD / SD)</span>
+                            <span class="text-xs text-slate-500 font-mono">Tahap: Konkret Operasional</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-2">Prinsip Desain: Manipulasi Fisik & High Scaffolding</h3>
+                        <ul class="list-disc pl-5 text-sm text-slate-600 space-y-2">
+                            <li><strong>Pendekatan:</strong> Pengalaman sensori langsung, permainan terstruktur, manipulasi alat peraga fisik (contoh: balok Cuisenaire untuk pecahan).</li>
+                            <li><strong>Bentuk Scaffolding:</strong> Panduan visual langsung, instruksi bertahap (*step-by-step model*), modeling dari guru (*MKO*).</li>
+                        </ul>
+                    </div>
+
+                    <!-- Jenjang Menengah -->
+                    <div class="border border-slate-200 rounded-xl p-6 hover:shadow-md transition-shadow bg-slate-50">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="bg-indigo-100 text-indigo-800 text-xs font-bold px-3 py-1 rounded-md uppercase">Jenjang Pendidikan Menengah (SMP / SMA)</span>
+                            <span class="text-xs text-slate-500 font-mono">Tahap: Operasional Formal Awal</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-2">Prinsip Desain: Inkuiri Terbimbing & Problem-Based Learning</h3>
+                        <ul class="list-disc pl-5 text-sm text-slate-600 space-y-2">
+                            <li><strong>Pendekatan:</strong> Eksplorasi isu otentik lingkungan/sosial, debat dialektis, laboratorium inkuiri ilmiah.</li>
+                            <li><strong>Bentuk Scaffolding:</strong> LKS analitis, pertanyaan pemantik (*socratic questioning*), kerja kelompok kooperatif dengan pembagian peran eksplisit.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Jenjang Perguruan Tinggi -->
+                    <div class="border border-slate-200 rounded-xl p-6 hover:shadow-md transition-shadow bg-slate-50">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="bg-purple-100 text-purple-800 text-xs font-bold px-3 py-1 rounded-md uppercase">Jenjang Perguruan Tinggi (Universitas)</span>
+                            <span class="text-xs text-slate-500 font-mono">Tahap: Post-Formal / Andragogi</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-2">Prinsip Desain: Self-Directed Learning & Research-Based Project</h3>
+                        <ul class="list-disc pl-5 text-sm text-slate-600 space-y-2">
+                            <li><strong>Pendekatan:</strong> Case-Based Learning (CBL), Team-Based Project (TBP), dan analisis kritis literatur/isu industri riil.</li>
+                            <li><strong>Bentuk Scaffolding:</strong> Minimum; dosen berfungsi sebagai fasilitator/konsultan metodologi, penilaian berbasis *peer review* dan portofolio reflektif.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MODUL 3: TUGAS KELOMPOK (STUDI KASUS & DESAIN SILABUS) -->
+        <section id="tugas-kelompok" class="tab-content hidden space-y-8">
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center border-b pb-4 mb-6">
+                    <div>
+                        <h2 class="text-2xl font-bold text-slate-900">
+                            <i class="fa-solid fa-users-viewfinder text-indigo-600 mr-2"></i> Tugas Kelompok: Analisis Studi Kasus & Desain Silabus
+                        </h2>
+                        <p class="text-slate-500 text-sm mt-1">
+                            Setiap kelompok wajib membedah Studi Kasus yang ditentukan, lalu menyusun Silabus/RPP/RPS rekonstruktif sebagai solusinya.
+                        </p>
+                    </div>
+                    <span class="mt-3 md:mt-0 bg-red-100 text-red-700 text-xs font-bold px-3 py-1.5 rounded-lg">
+                        <i class="fa-regular fa-clock mr-1"></i> Deadline: Kamis, 12 November 2026, 21:00 WIB
+                    </span>
+                </div>
+
+                <!-- CARDS KELOMPOK -->
+                <div class="grid md:grid-cols-3 gap-6">
+
+                    <!-- KELOMPOK 1 -->
+                    <div class="border-2 border-blue-200 hover:border-blue-500 rounded-2xl p-6 bg-blue-50/30 flex flex-col justify-between transition-all">
+                        <div>
+                            <div class="bg-blue-600 text-white font-bold text-xs px-3 py-1 rounded-full w-max mb-4">
+                                KELOMPOK 1 • JENJANG SD
+                            </div>
+                            <h3 class="font-bold text-slate-900 text-lg mb-2">Studi Kasus: Kegagalan Konsep Sains/Matematika Konkret</h3>
+                            <div class="bg-white p-4 rounded-xl border border-blue-100 text-xs text-slate-600 space-y-2 mb-4 leading-relaxed">
+                                <p class="font-semibold text-slate-800">Deskripsi Masalah:</p>
+                                <p>"Di SD Negeri X, Guru Kelas 4 mengajarkan konsep <em>Perubahan Wujud Benda</em> secara verbal matematis melalui ceramah. Hasil ujian menunjukkan 75% siswa mengalami miskonsepsi berat dan tidak mampu menghubungkan materi dengan fenomena kehidupan sehari-hari."</p>
+                            </div>
+                            <div class="text-xs text-slate-700 space-y-2">
+                                <p class="font-semibold text-indigo-900">Tugas Rekonstruksi Silabus/RPP:</p>
+                                <ul class="list-disc pl-4 space-y-1">
+                                    <li>Rancang RPP 2 Pertemuan berbasis <strong>Inquiry Learning / Ekosistem Konkret</strong>.</li>
+                                    <li>Sertakan integrasi <em>manipulatif object</em> (alat peraga fisik).</li>
+                                    <li>Petakan alur <em>Scaffolding</em> spesifik untuk anak usia 9-10 tahun.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-blue-100">
+                            <span class="text-xs font-medium text-slate-500">Output: RPP Konstruktivis SD (PDF)</span>
+                        </div>
+                    </div>
+
+                    <!-- KELOMPOK 2 -->
+                    <div class="border-2 border-indigo-200 hover:border-indigo-500 rounded-2xl p-6 bg-indigo-50/30 flex flex-col justify-between transition-all">
+                        <div>
+                            <div class="bg-indigo-600 text-white font-bold text-xs px-3 py-1 rounded-full w-max mb-4">
+                                KELOMPOK 2 • JENJANG SMA
+                            </div>
+                            <h3 class="font-bold text-slate-900 text-lg mb-2">Studi Kasus: Kegagalan Problem-Based Learning (PBL)</h3>
+                            <div class="bg-white p-4 rounded-xl border border-indigo-100 text-xs text-slate-600 space-y-2 mb-4 leading-relaxed">
+                                <p class="font-semibold text-slate-800">Deskripsi Masalah:</p>
+                                <p>"Seorang guru SMA meminta siswa melakukan PBL isu 'Pencemaran Lingkungan' tanpa memberikan sintaks awal yang jelas (*unguided instruction*). Pembelajaran menjadi pasif, beberapa kelompok ricuh, dan laporan akhir hanya berupa salinan dari internet tanpa analisis."</p>
+                            </div>
+                            <div class="text-xs text-slate-700 space-y-2">
+                                <p class="font-semibold text-indigo-900">Tugas Rekonstruksi Silabus/RPP:</p>
+                                <ul class="list-disc pl-4 space-y-1">
+                                    <li>Rancang RPP/Silabus PBL Terstruktur (3 Pertemuan).</li>
+                                    <li>Formulasikan matriks <strong>ZPD & Lembar Kerja (LKS) Inkuiri</strong>.</li>
+                                    <li>Susun instrumen <em>Asesmen Autentik (Rubrik Proyek)</em>.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-indigo-100">
+                            <span class="text-xs font-medium text-slate-500">Output: Silabus & RPP PBL SMA (PDF)</span>
+                        </div>
+                    </div>
+
+                    <!-- KELOMPOK 3 -->
+                    <div class="border-2 border-purple-200 hover:border-purple-500 rounded-2xl p-6 bg-purple-50/30 flex flex-col justify-between transition-all">
+                        <div>
+                            <div class="bg-purple-600 text-white font-bold text-xs px-3 py-1 rounded-full w-max mb-4">
+                                KELOMPOK 3 • PERGURUAN TINGGI
+                            </div>
+                            <h3 class="font-bold text-slate-900 text-lg mb-2">Studi Kasus: Pasivitas Mahasiswa pada Case-Based Learning</h3>
+                            <div class="bg-white p-4 rounded-xl border border-purple-100 text-xs text-slate-600 space-y-2 mb-4 leading-relaxed">
+                                <p class="font-semibold text-slate-800">Deskripsi Masalah:</p>
+                                <p>"Dalam mata kuliah Etika Bisnis di Perguruan Tinggi, dosen memberikan studi kasus pelanggaran korporasi. Namun, diskusi kelompok berjalan sangat dingin; mahasiswa hanya membaca ulang rangkuman slide dosen tanpa ada argumentasi kritis atau perdebatan dialektis."</p>
+                            </div>
+                            <div class="text-xs text-slate-700 space-y-2">
+                                <p class="font-semibold text-indigo-900">Tugas Rekonstruksi RPS:</p>
+                                <ul class="list-disc pl-4 space-y-1">
+                                    <li>Rancang <strong>RPS (Rencana Pembelajaran Semester) Modul 4 Minggu</strong> berbasis <em>Team-Based Project</em>.</li>
+                                    <li>Integrasikan teknik *Socratic Dialogue* & Peer Assessment.</li>
+                                    <li>Rancang skenario studi kasus interaktif yang memicu konflik kognitif.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-purple-100">
+                            <span class="text-xs font-medium text-slate-500">Output: RPS Konstruktivis PT (PDF)</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- SUBMISSION & GUIDELINES SECTION -->
+                <div class="mt-10 bg-slate-900 text-white p-8 rounded-2xl">
+                    <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-cloud-arrow-up text-emerald-400"></i> Petunjuk Format & Pengumpulan Tugas
+                    </h3>
+                    <div class="grid md:grid-cols-2 gap-6 text-sm text-slate-300 mb-6">
+                        <div>
+                            <h4 class="font-semibold text-white mb-2">Komponen Dokumen (Silabus / RPP / RPS):</h4>
+                            <ol class="list-decimal pl-5 space-y-1">
+                                <li><strong>Analisis Kasus Reflektif:</strong> Di mana letak kegagalan instruksional awal?</li>
+                                <li><strong>Matriks Silabus/RPP:</strong> Identitas, CPMK/KD, Indikator, Sintaks Pembelajaran, Alokasi Waktu, dan Media.</li>
+                                <li><strong>Desain Scaffolding & ZPD:</strong> Penjelasan eksplisit peran guru & bantuan bertahap.</li>
+                                <li><strong>Rubrik Asesmen Autentik:</strong> Penilaian proses dan produk akhir.</li>
+                            </ol>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-white mb-2">Ketentuan Penamaan File:</h4>
+                            <p class="font-mono bg-slate-800 p-2.5 rounded-lg border border-slate-700 text-emerald-300 text-xs mb-3">
+                                Kelompok[No]_Jenjang_[Nama Ketua].pdf<br>
+                                Contoh: Kelompok1_SD_AhmadFauzi.pdf
+                            </p>
+                            <p class="text-xs text-slate-400">
+                                *Setiap kelompok diwakili Ketua untuk mengunggah berkas final dalam format PDF ke Google Drive resmi di bawah ini.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="text-center pt-4 border-t border-slate-800">
+                        <a href="https://drive.google.com/drive/folders/1XLiV1KRJJsCB_YVNczROofL1cvduKvFi?usp=sharing" target="_blank" class="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-8 py-3 rounded-xl transition-all shadow-lg text-base">
+                            <i class="fa-brands fa-google-drive text-lg"></i> Unggah Hasil Diskusi Kelompok ke Google Drive
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-500 mt-12">
+        <p>© 2026 Perkuliahan Teori Belajar dan Pembelajaran • Program Studi Pendidikan</p>
+    </footer>
+
+    <!-- INTERACTIVE TAB SCRIPT -->
+    <script>
+        function switchTab(tabId) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.add('hidden');
+            });
+
+            // Reset active styles on buttons
+            document.querySelectorAll('.tab-button').forEach(btn => {
+                btn.classList.remove('tab-active');
+                btn.classList.add('text-slate-500');
+            });
+
+            // Show selected tab content
+            document.getElementById(tabId).classList.remove('hidden');
+
+            // Set active button style
+            const activeBtn = document.getElementById('btn-' + tabId);
+            activeBtn.classList.add('tab-active');
+            activeBtn.classList.remove('text-slate-500');
+        }
+    </script>
+</body>
+</html>
