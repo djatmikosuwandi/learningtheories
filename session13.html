@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modul Perkuliahan: Teori Konektivisme & Pemetaan PLN</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        net: {
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                            800: '#3730a3',
+                            900: '#312e81',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .hero-pattern {
+            background-color: #1e1b4b;
+            background-image: radial-gradient(#4f46e5 1px, transparent 1px), radial-gradient(#0d9488 1px, #1e1b4b 1px);
+            background-size: 40px 40px;
+            background-position: 0 0, 20px 20px;
+        }
+        .tab-active {
+            border-bottom: 3px solid #4f46e5;
+            color: #4f46e5;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased flex flex-col min-h-screen">
+
+    <!-- Top Navigation Bar -->
+    <header class="bg-white/95 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-net-700 to-teal-600 text-white flex items-center justify-center text-lg shadow">
+                    <i class="fa-solid fa-circle-nodes"></i>
+                </div>
+                <div>
+                    <span class="block text-[11px] font-bold uppercase tracking-wider text-net-600">Teori Belajar & Pembelajaran</span>
+                    <h1 class="text-sm sm:text-base font-extrabold text-slate-900 leading-tight">Konektivisme & Pemetaan PLN</h1>
+                </div>
+            </div>
+            <div class="hidden md:flex items-center space-x-6 text-xs sm:text-sm font-medium text-slate-600">
+                <button onclick="navigateTab('bagian1')" class="hover:text-net-600 transition">1. Epistemologi</button>
+                <button onclick="navigateTab('bagian2')" class="hover:text-net-600 transition">2. Desain Instruksional</button>
+                <button onclick="navigateTab('bagian3')" class="hover:text-net-600 transition">3. Struktur PLN</button>
+                <button onclick="navigateTab('bagian4')" class="bg-net-600 hover:bg-net-700 text-white px-4 py-2 rounded-lg font-semibold transition shadow-sm flex items-center gap-2">
+                    <i class="fa-solid fa-users-gear"></i> Studi Kasus Kelompok
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Banner & Sub-CPMK -->
+    <section class="hero-pattern text-white py-12 px-4 sm:px-6 lg:px-8 border-b border-indigo-900">
+        <div class="max-w-7xl mx-auto space-y-6">
+            <div class="inline-flex items-center space-x-2 bg-indigo-950/80 border border-indigo-700/70 px-3.5 py-1.5 rounded-full text-xs font-semibold text-teal-300">
+                <i class="fa-solid fa-network-wired"></i>
+                <span>Modul Perkuliahan Era Digital • George Siemens & Stephen Downes</span>
+            </div>
+            <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight max-w-4xl leading-tight">
+                Teori Konektivisme (<span class="text-teal-400">Connectivism</span>) dan Pemetaan <span class="text-indigo-300">Personal Learning Network</span> (PLN)
+            </h2>
+            
+            <!-- Sub-CPMK Box -->
+            <div class="bg-slate-900/80 backdrop-blur-md border border-indigo-700/50 rounded-2xl p-5 sm:p-6 max-w-4xl">
+                <h3 class="text-xs font-bold uppercase tracking-wider text-amber-400 mb-3 flex items-center gap-2">
+                    <i class="fa-solid fa-bullseye"></i> Capaian Pembelajaran Mata Kuliah (Sub-CPMK)
+                </h3>
+                <div class="grid sm:grid-cols-2 gap-4 text-xs sm:text-sm text-slate-200">
+                    <div class="flex items-start gap-3 bg-white/5 p-3.5 rounded-xl border border-white/10">
+                        <span class="w-6 h-6 rounded-full bg-teal-500 text-slate-950 font-bold flex items-center justify-center shrink-0 text-xs">1</span>
+                        <p><strong>Menganalisis</strong> prinsip dasar teori Konektivisme (<em>Connectivism</em>) serta pemanfaatannya dalam merancang pembelajaran era digital.</p>
+                    </div>
+                    <div class="flex items-start gap-3 bg-white/5 p-3.5 rounded-xl border border-white/10">
+                        <span class="w-6 h-6 rounded-full bg-indigo-400 text-slate-950 font-bold flex items-center justify-center shrink-0 text-xs">2</span>
+                        <p><strong>Menganalisis</strong> prinsip-prinsip konektivisme dan memetakan ketepatan struktur <em>Personal Learning Network</em> (PLN) melalui analisis studi kasus empiris.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Module Navigation Tabs -->
+    <div class="bg-white border-b border-slate-200 sticky top-16 z-40 shadow-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex overflow-x-auto space-x-6 sm:space-x-8">
+            <button onclick="navigateTab('bagian1')" id="tab-bagian1" class="nav-tab tab-active py-4 text-xs sm:text-sm whitespace-nowrap transition focus:outline-none">
+                <i class="fa-solid fa-book-open mr-1.5"></i> Bagian 1: Prinsip Dasar Konektivisme
+            </button>
+            <button onclick="navigateTab('bagian2')" id="tab-bagian2" class="nav-tab text-slate-500 hover:text-slate-800 py-4 text-xs sm:text-sm font-medium whitespace-nowrap transition focus:outline-none">
+                <i class="fa-solid fa-compass-drafting mr-1.5"></i> Bagian 2: Desain Pembelajaran
+            </button>
+            <button onclick="navigateTab('bagian3')" id="tab-bagian3" class="nav-tab text-slate-500 hover:text-slate-800 py-4 text-xs sm:text-sm font-medium whitespace-nowrap transition focus:outline-none">
+                <i class="fa-solid fa-diagram-project mr-1.5"></i> Bagian 3: Struktur & Anatomi PLN
+            </button>
+            <button onclick="navigateTab('bagian4')" id="tab-bagian4" class="nav-tab text-slate-500 hover:text-slate-800 py-4 text-xs sm:text-sm font-medium whitespace-nowrap transition focus:outline-none">
+                <i class="fa-solid fa-magnifying-glass-chart mr-1.5"></i> Bagian 4: Studi Kasus & Rubrik
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Content Container -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow w-full">
+
+        <!-- BAGIAN 1: LANDASAN EPISTEMOLOGIS & 8 PRINSIP -->
+        <section id="bagian1" class="tab-panel space-y-8">
+            <div class="grid lg:grid-cols-2 gap-6">
+                <!-- 1.1 Latar Belakang -->
+                <div class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                    <span class="text-xs font-bold text-net-600 bg-net-50 px-3 py-1 rounded-full">1.1 Latar Belakang Epistemologis</span>
+                    <h3 class="text-xl font-bold text-slate-900">Mengapa Teori Klasik Tidak Lagi Cukup?</h3>
+                    <p class="text-sm text-slate-600 leading-relaxed">
+                        Teori belajar klasik—<strong>Behaviorisme, Kognitivisme, dan Konstruktivisme</strong>—dikembangkan pada masa di mana teknologi informasi belum memengaruhi pemerolehan pengetahuan secara masif. Teori-teori tersebut berasumsi bahwa proses belajar terjadi sepenuhnya <em>di dalam diri individu (internal)</em>.
+                    </p>
+                    <div class="bg-amber-50 border-l-4 border-amber-500 p-4 rounded-r-xl text-xs sm:text-sm text-amber-950 space-y-1.5">
+                        <p class="font-bold"><i class="fa-solid fa-hourglass-half mr-1 text-amber-600"></i> Siklus Paruh Waktu Pengetahuan (Half-Life of Knowledge):</p>
+                        <p class="text-slate-700 leading-relaxed">
+                            Rentang waktu dari saat pengetahuan diperoleh hingga menjadi usang menyusut sangat cepat. Oleh karena itu, kemampuan untuk mengetahui <strong>di mana menemukan informasi (<em>know-where</em>)</strong> jauh lebih krusial daripada sekadar menyimpan informasi di kepala (<em>know-what</em> dan <em>know-how</em>).
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 1.2 Definisi Konektivisme -->
+                <div class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm space-y-4 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <span class="text-xs font-bold text-teal-700 bg-teal-50 px-3 py-1 rounded-full">1.2 Definisi Konseptual</span>
+                        <h3 class="text-xl font-bold text-slate-900">Definisi Konektivisme (Siemens, 2005)</h3>
+                        <blockquote class="border-l-4 border-net-600 pl-4 italic text-sm text-slate-700 bg-slate-50 py-3 pr-3 rounded-r-lg">
+                            "Belajar adalah sebuah proses yang terjadi di dalam lingkungan samar-samar yang terus bergeser, tidak sepenuhnya berada di bawah kendali individu. Pengetahuan dapat berada di luar diri manusia (di dalam basis data, algoritma, komunitas digital, atau perangkat non-manusia), dan belajar berfokus pada menghubungkan sekumpulan informasi khusus serta memelihara koneksi tersebut agar pembelajaran tetap berkelanjutan."
+                        </blockquote>
+                    </div>
+                    <div class="grid grid-cols-3 gap-2 pt-4 border-t border-slate-100 text-center text-xs">
+                        <div class="p-2.5 bg-slate-50 rounded-lg">
+                            <span class="block font-bold text-slate-800">Teori Klasik</span>
+                            <span class="text-slate-500 text-[11px]">Pengetahuan di dalam otak</span>
+                        </div>
+                        <div class="p-2.5 bg-net-50 rounded-lg flex items-center justify-center font-bold text-net-700">
+                            <i class="fa-solid fa-arrow-right-long text-lg"></i>
+                        </div>
+                        <div class="p-2.5 bg-teal-50 rounded-lg">
+                            <span class="block font-bold text-teal-900">Konektivisme</span>
+                            <span class="text-teal-700 text-[11px]">Pengetahuan terdistribusi di jaringan</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 1.3 Delapan Prinsip Dasar Konektivisme -->
+            <div class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm space-y-6">
+                <div class="border-b border-slate-100 pb-4">
+                    <span class="text-xs font-bold text-net-600 uppercase tracking-wider">1.3 Fondasi Teoritis</span>
+                    <h3 class="text-xl font-bold text-slate-900 mt-1">Delapan Prinsip Dasar Konektivisme (George Siemens)</h3>
+                </div>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/80 hover:border-net-400 transition space-y-2">
+                        <span class="w-7 h-7 rounded-lg bg-net-600 text-white font-bold text-xs flex items-center justify-center">01</span>
+                        <h4 class="font-bold text-sm text-slate-900">Keragaman Opini</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed">Pembelajaran dan pengetahuan bertumpu pada keragaman opini (<em>diversity of opinions</em>).</p>
+                    </div>
+                    <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/80 hover:border-net-400 transition space-y-2">
+                        <span class="w-7 h-7 rounded-lg bg-net-600 text-white font-bold text-xs flex items-center justify-center">02</span>
+                        <h4 class="font-bold text-sm text-slate-900">Menghubungkan Simpul</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed">Pembelajaran adalah proses menghubungkan simpul-simpul (<em>nodes</em>) atau sumber informasi khusus.</p>
+                    </div>
+                    <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/80 hover:border-net-400 transition space-y-2">
+                        <span class="w-7 h-7 rounded-lg bg-net-600 text-white font-bold text-xs flex items-center justify-center">03</span>
+                        <h4 class="font-bold text-sm text-slate-900">Perangkat Non-Manusia</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed">Pembelajaran dapat bersemayam di dalam perangkat non-manusia (<em>non-human appliances</em>), seperti basis data, KMS, dan AI.</p>
+                    </div>
+                    <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/80 hover:border-net-400 transition space-y-2">
+                        <span class="w-7 h-7 rounded-lg bg-net-600 text-white font-bold text-xs flex items-center justify-center">04</span>
+                        <h4 class="font-bold text-sm text-slate-900">Kapasitas Mengetahui</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed">Kapasitas untuk mengetahui lebih banyak jauh lebih penting daripada apa yang saat ini diketahui.</p>
+                    </div>
+                    <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/80 hover:border-teal-500 transition space-y-2">
+                        <span class="w-7 h-7 rounded-lg bg-teal-600 text-white font-bold text-xs flex items-center justify-center">05</span>
+                        <h4 class="font-bold text-sm text-slate-900">Memelihara Koneksi</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed">Memelihara dan menjaga koneksi diperlukan untuk memfasilitasi pembelajaran berkelanjutan.</p>
+                    </div>
+                    <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/80 hover:border-teal-500 transition space-y-2">
+                        <span class="w-7 h-7 rounded-lg bg-teal-600 text-white font-bold text-xs flex items-center justify-center">06</span>
+                        <h4 class="font-bold text-sm text-slate-900">Melihat Hubungan</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed">Kemampuan untuk melihat hubungan antar bidang, ide, dan konsep adalah keterampilan inti (<em>core skill</em>).</p>
+                    </div>
+                    <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/80 hover:border-teal-500 transition space-y-2">
+                        <span class="w-7 h-7 rounded-lg bg-teal-600 text-white font-bold text-xs flex items-center justify-center">07</span>
+                        <h4 class="font-bold text-sm text-slate-900">Kebaruan (Currency)</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed">Kebaruan (<em>currency</em> — pengetahuan akurat dan mutakhir) adalah tujuan dari semua aktivitas belajar konektivis.</p>
+                    </div>
+                    <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/80 hover:border-teal-500 transition space-y-2">
+                        <span class="w-7 h-7 rounded-lg bg-teal-600 text-white font-bold text-xs flex items-center justify-center">08</span>
+                        <h4 class="font-bold text-sm text-slate-900">Pengambilan Keputusan</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed">Pengambilan keputusan itu sendiri adalah proses belajar. Jawaban benar hari ini bisa salah besok akibat perubahan informasi.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BAGIAN 2: PEMANFAATAN DALAM DESAIN PEMBELAJARAN -->
+        <section id="bagian2" class="tab-panel hidden space-y-8">
+            <div class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm space-y-6">
+                <div class="border-b border-slate-100 pb-4">
+                    <span class="text-xs font-bold text-net-600 bg-net-50 px-3 py-1 rounded-full">2.1 Komponen Kunci Desain Instruksional</span>
+                    <h3 class="text-xl font-bold text-slate-900 mt-2">Pergeseran Peran Pendidik: Menjadi Kurator Jaringan & Fasilitator Koneksi</h3>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="p-5 rounded-2xl bg-indigo-50/60 border border-indigo-100 space-y-3">
+                        <div class="w-10 h-10 rounded-xl bg-net-600 text-white flex items-center justify-center text-lg">
+                            <i class="fa-solid fa-circle-dot"></i>
+                        </div>
+                        <h4 class="font-bold text-slate-900 text-base">1. Simpul (Nodes)</h4>
+                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                            Entitas eksternal yang dapat dihubungkan untuk membentuk jaringan. Simpul dapat berupa <strong>pakar, buku, jurnal, situs web, podcast, komunitas daring, maupun repositori data</strong>.
+                        </p>
+                    </div>
+
+                    <div class="p-5 rounded-2xl bg-teal-50/60 border border-teal-100 space-y-3">
+                        <div class="w-10 h-10 rounded-xl bg-teal-600 text-white flex items-center justify-center text-lg">
+                            <i class="fa-solid fa-link"></i>
+                        </div>
+                        <h4 class="font-bold text-slate-900 text-base">2. Koneksi (Connections)</h4>
+                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                            Tautan atau interaksi yang mengikat antar simpul. Kekuatan koneksi ditentukan oleh <strong>frekuensi interaksi, relevansi, dan timbal balik</strong> antar pelaku belajar.
+                        </p>
+                    </div>
+
+                    <div class="p-5 rounded-2xl bg-amber-50/60 border border-amber-100 space-y-3">
+                        <div class="w-10 h-10 rounded-xl bg-amber-600 text-white flex items-center justify-center text-lg">
+                            <i class="fa-solid fa-filter"></i>
+                        </div>
+                        <h4 class="font-bold text-slate-900 text-base">3. Kurasi Konten (Content Curation)</h4>
+                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                            Alih-alih memberikan silabus statis, dosen/guru melatih mahasiswa untuk <strong>menyaring, mengevaluasi validitas, dan mengorganisasi arus informasi</strong> yang melimpah (<em>information overload</em>).
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2.2 Sintaks Desain Pembelajaran -->
+            <div class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm space-y-6">
+                <div class="border-b border-slate-100 pb-4">
+                    <span class="text-xs font-bold text-teal-700 bg-teal-50 px-3 py-1 rounded-full">2.2 Sintaks Desain Pembelajaran</span>
+                    <h3 class="text-xl font-bold text-slate-900 mt-2">Model 4-Tahap Pembelajaran Konektivis</h3>
+                </div>
+
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="relative p-5 rounded-2xl border-2 border-slate-200 bg-white space-y-3">
+                        <span class="text-xs font-extrabold uppercase tracking-wider text-net-600">Tahap 1</span>
+                        <h4 class="font-bold text-slate-900 text-base">Agregasi (Aggregation)</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Peserta didik mengumpulkan berbagai sumber informasi dari beragam platform digital (jurnal, forum, pakar media sosial, AI) terkait isu/topik tertentu.
+                        </p>
+                    </div>
+                    <div class="relative p-5 rounded-2xl border-2 border-slate-200 bg-white space-y-3">
+                        <span class="text-xs font-extrabold uppercase tracking-wider text-net-600">Tahap 2</span>
+                        <h4 class="font-bold text-slate-900 text-base">Kurasi & Remiks (Curation & Remixing)</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Peserta didik menyaring kredibilitas informasi, menghubungkan ide-ide berbeda, dan mensintesisnya menjadi pemahaman baru (peta konsep digital/ringkasan terkurasi).
+                        </p>
+                    </div>
+                    <div class="relative p-5 rounded-2xl border-2 border-slate-200 bg-white space-y-3">
+                        <span class="text-xs font-extrabold uppercase tracking-wider text-teal-600">Tahap 3</span>
+                        <h4 class="font-bold text-slate-900 text-base">Kreasi & Berbagi (Creation & Sharing)</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Peserta didik memproduksi artefak pengetahuan (blog, video, infografis, repositori kode) dan memublikasikannya kembali ke ruang publik/jejaring agar dikritisi simpul lain.
+                        </p>
+                    </div>
+                    <div class="relative p-5 rounded-2xl border-2 border-slate-200 bg-white space-y-3">
+                        <span class="text-xs font-extrabold uppercase tracking-wider text-teal-600">Tahap 4</span>
+                        <h4 class="font-bold text-slate-900 text-base">Umpan Balik & Refleksi Jaringan</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Peserta didik merespons komentar, memperbarui pemahaman berdasarkan masukan komunitas, dan merawat koneksi baru yang terbentuk.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BAGIAN 3: STRUKTUR PERSONAL LEARNING NETWORK (PLN) -->
+        <section id="bagian3" class="tab-panel hidden space-y-8">
+            <!-- 3.1 Konsep & 3.2 Anatomi PLN -->
+            <div class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm space-y-6">
+                <div class="space-y-2 border-b border-slate-100 pb-4">
+                    <span class="text-xs font-bold text-net-600 bg-net-50 px-3 py-1 rounded-full">3.1 & 3.2 Anatomi Ekosistem Belajar</span>
+                    <h3 class="text-xl font-bold text-slate-900">Konsep & Tiga Lapisan Struktur <em>Personal Learning Network</em> (PLN)</h3>
+                    <p class="text-sm text-slate-600">
+                        <strong>PLN</strong> adalah ekosistem informasi, alat digital, dan hubungan interpersonal yang dibangun secara sadar dan mandiri oleh seorang pembelajar untuk mendukung proses belajar sepanjang hayat (<em>lifelong learning</em>).
+                    </p>
+                </div>
+
+                <!-- Table / Cards Anatomi PLN -->
+                <div class="overflow-x-auto rounded-xl border border-slate-200">
+                    <table class="w-full text-left border-collapse text-xs sm:text-sm">
+                        <thead>
+                            <tr class="bg-slate-900 text-white">
+                                <th class="p-4 font-bold">Lapisan Struktur PLN</th>
+                                <th class="p-4 font-bold">Komponen Utama</th>
+                                <th class="p-4 font-bold">Fungsi dalam Ekosistem Belajar</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200 bg-white">
+                            <tr class="hover:bg-indigo-50/40 transition">
+                                <td class="p-4 font-bold text-net-800">
+                                    <div class="flex items-center gap-2">
+                                        <i class="fa-solid fa-users text-net-600"></i>
+                                        <span>1. Simpul Manusia (<em>Human Nodes</em>)</span>
+                                    </div>
+                                </td>
+                                <td class="p-4 text-slate-700">Mentor, dosen, pakar industri, rekan sejawat (<em>peers</em>), komunitas profesi (LinkedIn, X/Twitter, forum riset).</td>
+                                <td class="p-4 text-slate-600">Dialog dialektis, validasi ide, umpan balik kritis, dan kolaborasi pemecahan masalah.</td>
+                            </tr>
+                            <tr class="hover:bg-teal-50/40 transition">
+                                <td class="p-4 font-bold text-teal-800">
+                                    <div class="flex items-center gap-2">
+                                        <i class="fa-solid fa-database text-teal-600"></i>
+                                        <span>2. Simpul Informasi & Alat (<em>Information & Tool Nodes</em>)</span>
+                                    </div>
+                                </td>
+                                <td class="p-4 text-slate-700">Jurnal ilmiah, RSS feeds, Podcast, YouTube edukasi, repositori terbuka (GitHub, Google Scholar), AI asisten.</td>
+                                <td class="p-4 text-slate-600">Sumber data mentah, pembaruan tren mutakhir (<em>currency</em>), dan alat bantu pengolahan kognitif.</td>
+                            </tr>
+                            <tr class="hover:bg-amber-50/40 transition">
+                                <td class="p-4 font-bold text-amber-800">
+                                    <div class="flex items-center gap-2">
+                                        <i class="fa-solid fa-comments text-amber-600"></i>
+                                        <span>3. Ruang Pertukaran (<em>Exchange Spaces / Hub</em>)</span>
+                                    </div>
+                                </td>
+                                <td class="p-4 text-slate-700">LMS, blog pribadi, Notion, Discord/Slack, media sosial akademik (ResearchGate).</td>
+                                <td class="p-4 text-slate-600">Tempat agregasi, kurasi, dan publikasi artefak pengetahuan agar terjadi timbal balik.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 3.3 Indikator Ketepatan Struktur PLN -->
+            <div class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm space-y-6">
+                <div class="border-b border-slate-100 pb-4">
+                    <span class="text-xs font-bold text-teal-700 bg-teal-50 px-3 py-1 rounded-full">3.3 Parameter Evaluasi</span>
+                    <h3 class="text-xl font-bold text-slate-900 mt-2">4 Indikator Ketepatan Struktur PLN</h3>
+                </div>
+                <div class="grid sm:grid-cols-2 gap-5">
+                    <div class="p-5 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+                        <h4 class="font-bold text-slate-900 text-sm flex items-center gap-2">
+                            <span class="w-6 h-6 rounded-full bg-net-600 text-white text-xs flex items-center justify-center">1</span>
+                            Heterogenitas Simpul (<em>Node Diversity</em>)
+                        </h4>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Apakah jaringan mencakup perspektif lintas disiplin dan tidak terjebak dalam <strong><em>echo chamber</em></strong> (ruang gema yang hanya berisi pendapat yang sama)?
+                        </p>
+                    </div>
+                    <div class="p-5 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+                        <h4 class="font-bold text-slate-900 text-sm flex items-center gap-2">
+                            <span class="w-6 h-6 rounded-full bg-net-600 text-white text-xs flex items-center justify-center">2</span>
+                            Aliran Dua Arah (<em>Bidirectional Flow</em>)
+                        </h4>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Apakah pembelajar hanya menjadi konsumen pasif (<strong><em>lurker</em></strong>), atau juga aktif berkontribusi memproduksi pengetahuan ke dalam jaringan?
+                        </p>
+                    </div>
+                    <div class="p-5 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+                        <h4 class="font-bold text-slate-900 text-sm flex items-center gap-2">
+                            <span class="w-6 h-6 rounded-full bg-teal-600 text-white text-xs flex items-center justify-center">3</span>
+                            Mekanisme Filter & Validasi (<em>Filtering Mechanism</em>)
+                        </h4>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Bagaimana pembelajar memverifikasi kebenaran informasi dan menyaring hoaks atau informasi usang?
+                        </p>
+                    </div>
+                    <div class="p-5 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+                        <h4 class="font-bold text-slate-900 text-sm flex items-center gap-2">
+                            <span class="w-6 h-6 rounded-full bg-teal-600 text-white text-xs flex items-center justify-center">4</span>
+                            Keberlanjutan Koneksi (<em>Sustainability</em>)
+                        </h4>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Apakah jaringan dikelola dengan alat agregasi yang efisien sehingga mudah dirawat secara jangka panjang?
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BAGIAN 4: STUDI KASUS KELOMPOK & RUBRIK PENILAIAN -->
+        <section id="bagian4" class="tab-panel hidden space-y-8">
+            <div class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm space-y-6">
+                <div class="flex flex-col md:flex-row md:items-center justify-between border-b border-slate-100 pb-4 gap-3">
+                    <div>
+                        <span class="text-xs font-bold text-indigo-700 bg-indigo-50 px-3 py-1 rounded-full">Bagian 4 • Praktik Analisis Empiris</span>
+                        <h3 class="text-xl font-bold text-slate-900 mt-2">Tugas Analisis Studi Kasus Kelompok (Pilih Kelompok Anda)</h3>
+                    </div>
+                    <div class="flex gap-2 bg-slate-100 p-1 rounded-xl self-start">
+                        <button onclick="selectCase(1)" id="case-btn-1" class="case-selector bg-net-600 text-white text-xs font-bold px-3.5 py-2 rounded-lg transition">Kelompok 1 (SMA)</button>
+                        <button onclick="selectCase(2)" id="case-btn-2" class="case-selector text-slate-600 hover:text-slate-900 text-xs font-bold px-3.5 py-2 rounded-lg transition">Kelompok 2 (Mahasiswa)</button>
+                        <button onclick="selectCase(3)" id="case-btn-3" class="case-selector text-slate-600 hover:text-slate-900 text-xs font-bold px-3.5 py-2 rounded-lg transition">Kelompok 3 (MGMP Guru)</button>
+                    </div>
+                </div>
+
+                <!-- KASUS 1 -->
+                <div id="case-panel-1" class="case-panel space-y-5">
+                    <div class="bg-blue-50/70 border border-blue-200 rounded-2xl p-6 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full">STUDI KASUS KELOMPOK 1 • KONTEKS PENDIDIKAN MENENGAH (SMA)</span>
+                        </div>
+                        <h4 class="text-lg font-extrabold text-slate-900">"Jebakan Ruang Gema (Echo Chamber) dan Information Overload dalam Riset Siswa"</h4>
+                        <p class="text-xs sm:text-sm text-slate-700 leading-relaxed">
+                            Bu Sari, seorang guru Sosiologi SMA kelas XI, menugaskan siswanya untuk melakukan proyek analisis isu dampak kecerdasan buatan (AI) terhadap lapangan kerja di masa depan. Karena ingin menerapkan pembelajaran era digital, Bu Sari membebaskan siswa mencari sumber secara daring tanpa memberikan panduan kurasi informasi.
+                        </p>
+                        <p class="text-xs sm:text-sm font-semibold text-slate-800">Setelah dua minggu, hasil pekerjaan siswa sangat mengecewakan:</p>
+                        <ul class="list-disc pl-5 text-xs sm:text-sm text-slate-700 space-y-1">
+                            <li>Kelompok-kelompok siswa hanya mengambil informasi dari algoritma TikTok dan video pendek YouTube yang bersifat sensasional dan bias.</li>
+                            <li>Siswa hanya berdiskusi di dalam grup WhatsApp internal kelompoknya sendiri tanpa pernah memvalidasi temuan mereka kepada pihak luar atau sumber akademik.</li>
+                            <li>Sebagian besar siswa merasa kebingungan (<em>information overload</em>) karena menemukan terlalu banyak opini yang saling bertentangan dan tidak tahu mana yang kredibel.</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 space-y-3">
+                        <h5 class="font-bold text-slate-900 text-sm flex items-center gap-2"><i class="fa-solid fa-clipboard-question text-net-600"></i> Pertanyaan Analisis Kelompok 1:</h5>
+                        <ol class="list-decimal pl-5 text-xs sm:text-sm text-slate-700 space-y-2.5">
+                            <li><strong>Evaluasi Prinsip Konektivisme:</strong> Prinsip-prinsip konektivisme mana saja yang gagal diterapkan dalam desain pembelajaran Bu Sari? Mengapa kebebasan mencari informasi di internet tidak otomatis menghasilkan pembelajaran konektivis yang efektif?</li>
+                            <li><strong>Audit Struktur PLN Siswa:</strong> Identifikasi kelemahan struktur PLN yang terbentuk pada siswa-siswa tersebut ditinjau dari indikator <em>Node Diversity</em> (keragaman simpul) dan <em>Filtering Mechanism</em> (mekanisme validasi).</li>
+                            <li><strong>Rekonstruksi Desain & Peta PLN:</strong> Rancanglah struktur PLN ideal bagi siswa SMA untuk proyek tersebut (tentukan <em>Human Nodes</em>, <em>Information Nodes</em>, dan <em>Exchange Spaces</em> yang spesifik) serta jelaskan peran baru Bu Sari sebagai kurator jaringan.</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- KASUS 2 -->
+                <div id="case-panel-2" class="case-panel hidden space-y-5">
+                    <div class="bg-indigo-50/70 border border-indigo-200 rounded-2xl p-6 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="bg-indigo-600 text-white text-xs font-bold px-3 py-1 rounded-full">STUDI KASUS KELOMPOK 2 • KONTEKS PENDIDIKAN TINGGI (MAHASISWA)</span>
+                        </div>
+                        <h4 class="text-lg font-extrabold text-slate-900">"Pembelajar Pasif (Lurker) di Tengah Melimpahnya Sumber Belajar Digital"</h4>
+                        <p class="text-xs sm:text-sm text-slate-700 leading-relaxed">
+                            Dimas adalah mahasiswa semester 6 Program Studi Sistem Informasi. Secara teknis, Dimas sangat melek teknologi. Ia mengikuti puluhan akun pakar teknologi di LinkedIn dan X (Twitter), berlangganan berbagai <em>newsletter</em> pemrograman, serta memiliki akses ke repositori jurnal internasional dan asisten AI berbayar.
+                        </p>
+                        <p class="text-xs sm:text-sm text-slate-700 leading-relaxed">
+                            Namun, saat menghadapi mata kuliah proyek pengembangan perangkat lunak, Dimas mengalami kebuntuan. Ia merasa tidak mampu menghubungkan berbagai teori yang ia baca untuk memecahkan masalah nyata di lapangan. Selama ini, pola belajar Dimas hanya sebatas menyimpan tautan artikel (<em>bookmarking</em>) dan menonton tutorial tanpa pernah berinteraksi, bertanya, atau membagikan hasil kodenya ke forum publik seperti GitHub atau komunitas pengembang.
+                        </p>
+                    </div>
+
+                    <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 space-y-3">
+                        <h5 class="font-bold text-slate-900 text-sm flex items-center gap-2"><i class="fa-solid fa-clipboard-question text-net-600"></i> Pertanyaan Analisis Kelompok 2:</h5>
+                        <ol class="list-decimal pl-5 text-xs sm:text-sm text-slate-700 space-y-2.5">
+                            <li><strong>Evaluasi Prinsip Konektivisme:</strong> Analisis kondisi Dimas menggunakan konsep <strong>Simpul (<em>Nodes</em>) vs. Koneksi (<em>Connections</em>)</strong> serta prinsip konektivisme tentang memelihara koneksi dan melihat hubungan antar konsep. Mengapa memiliki banyak sumber informasi belum menjadikan Dimas sebagai pembelajar konektivis yang utuh?</li>
+                            <li><strong>Audit Struktur PLN Dimas:</strong> Berdasarkan indikator ketepatan PLN, analisislah ketimpangan pada <strong>Aliran Dua Arah (<em>Bidirectional Flow</em>)</strong> dan fungsi <strong>Ruang Pertukaran (<em>Exchange Hub</em>)</strong> dalam ekosistem belajar Dimas.</li>
+                            <li><strong>Rekonstruksi Peta PLN:</strong> Buatlah rancangan transformasi struktur PLN untuk Dimas agar ia beralih dari sekadar konsumen informasi pasif menjadi kontributor aktif dalam jejaring pengetahuan profesional.</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- KASUS 3 -->
+                <div id="case-panel-3" class="case-panel hidden space-y-5">
+                    <div class="bg-teal-50/70 border border-teal-200 rounded-2xl p-6 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="bg-teal-700 text-white text-xs font-bold px-3 py-1 rounded-full">STUDI KASUS KELOMPOK 3 • PENGEMBANGAN PROFESIONAL PENDIDIK</span>
+                        </div>
+                        <h4 class="text-lg font-extrabold text-slate-900">"Usangnya Pengetahuan (Half-Life of Knowledge) pada Komunitas Musyawarah Guru"</h4>
+                        <p class="text-xs sm:text-sm text-slate-700 leading-relaxed">
+                            Komunitas Musyawarah Guru Mata Pelajaran (MGMP) IPA di Kabupaten X rutin mengadakan pertemuan tatap muka setiap dua bulan sekali. Namun, diskusi di dalam komunitas tersebut cenderung stagnan: para guru hanya bertukar perangkat ajar (RPP/Modul) lama dari tahun-tahun sebelumnya dan mengeluhkan kendala administratif kurikulum.
+                        </p>
+                        <p class="text-xs sm:text-sm text-slate-700 leading-relaxed">
+                            Ketika pemerintah mulai mendorong integrasi laboratorium virtual (<em>virtual lab</em>) dan simulasi interaktif dalam pembelajaran sains, mayoritas anggota MGMP kesulitan beradaptasi. Mereka tidak terbiasa mencari referensi pedagogi digital di luar lingkaran pertemanan lokal mereka, tidak mengikuti perkembangan riset pendidikan terkini, dan menganggap platform media sosial profesional hanya sebagai tempat hiburan.
+                        </p>
+                    </div>
+
+                    <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 space-y-3">
+                        <h5 class="font-bold text-slate-900 text-sm flex items-center gap-2"><i class="fa-solid fa-clipboard-question text-net-600"></i> Pertanyaan Analisis Kelompok 3:</h5>
+                        <ol class="list-decimal pl-5 text-xs sm:text-sm text-slate-700 space-y-2.5">
+                            <li><strong>Evaluasi Prinsip Konektivisme:</strong> Jelaskan fenomena stagnasi komunitas MGMP tersebut menggunakan konsep <strong>Siklus Paruh Waktu Pengetahuan (<em>Half-Life of Knowledge</em>)</strong>, prinsip <strong>Kebaruan (<em>Currency</em>)</strong>, serta peran <strong>Perangkat Non-Manusia (<em>Non-Human Appliances</em>)</strong> dalam teori konektivisme.</li>
+                            <li><strong>Audit Struktur PLN Komunitas:</strong> Mengapa struktur PLN yang tertutup dan hanya mengandalkan pertemuan luring lokal menghambat pertumbuhan profesional guru di era digital?</li>
+                            <li><strong>Rekonstruksi Ekosistem PLN MGMP:</strong> Rancanglah cetak biru (<em>blueprint</em>) struktur PLN kolaboratif berbasis digital bagi komunitas MGMP tersebut (mencakup strategi agregasi informasi terkini, koneksi dengan pakar/komunitas lintas daerah, serta platform berbagi artefak inovasi mengajar).</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- Interactive Group Worksheet -->
+                <div class="bg-slate-900 text-white p-6 rounded-2xl space-y-4">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                        <div>
+                            <h4 class="font-bold text-base text-teal-400 flex items-center gap-2">
+                                <i class="fa-solid fa-laptop-file"></i> Lembar Kerja Draf Analisis Kelompok
+                            </h4>
+                            <p class="text-xs text-slate-300">Susun poin-poin jawaban hasil diskusi kelompok Anda di bawah ini, lalu ekspor ke file teks (.txt) untuk dirapikan menjadi PDF.</p>
+                        </div>
+                        <button onclick="exportCaseDraft()" class="bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-extrabold text-xs px-4 py-2.5 rounded-xl transition flex items-center gap-2 self-start sm:self-auto">
+                            <i class="fa-solid fa-file-export"></i> Unduh Draf Diskusi (.TXT)
+                        </button>
+                    </div>
+                    <div class="grid sm:grid-cols-2 gap-3">
+                        <input type="text" id="group-name" placeholder="Nama Kelompok & Anggota (Contoh: Kelompok 1 - Budi, Siti, Andi)" class="bg-slate-800 border border-slate-700 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-teal-400">
+                        <select id="group-case" class="bg-slate-800 border border-slate-700 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-teal-400">
+                            <option value="Kasus 1: SMA (Echo Chamber & Information Overload)">Kasus 1: Konteks Pendidikan Menengah (SMA)</option>
+                            <option value="Kasus 2: Mahasiswa (Pembelajar Pasif / Lurker)">Kasus 2: Konteks Pendidikan Tinggi (Mahasiswa)</option>
+                            <option value="Kasus 3: MGMP Guru (Half-Life of Knowledge)">Kasus 3: Pengembangan Profesional Pendidik (MGMP)</option>
+                        </select>
+                    </div>
+                    <textarea id="group-notes" rows="5" placeholder="Tuliskan hasil analisis 3 pertanyaan kasus (1. Evaluasi Prinsip Konektivisme, 2. Audit Struktur PLN, 3. Rekonstruksi Peta PLN 3 Lapisan)..." class="w-full bg-slate-800 border border-slate-700 rounded-xl p-3.5 text-xs sm:text-sm text-slate-100 focus:outline-none focus:border-teal-400"></textarea>
+                </div>
+            </div>
+
+            <!-- Rubrik Penilaian & Referensi -->
+            <div class="grid lg:grid-cols-3 gap-6">
+                <div class="lg:col-span-2 bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                    <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                        <i class="fa-solid fa-award text-amber-500"></i> Rubrik Penilaian Analisis Studi Kasus (Skala 100)
+                    </h3>
+                    <div class="overflow-x-auto rounded-xl border border-slate-200">
+                        <table class="w-full text-left border-collapse text-xs sm:text-sm">
+                            <thead>
+                                <tr class="bg-slate-100 text-slate-800 border-b border-slate-200">
+                                    <th class="p-3 font-bold">Kriteria Penilaian</th>
+                                    <th class="p-3 font-bold text-center">Bobot</th>
+                                    <th class="p-3 font-bold">Indikator Keberhasilan</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-200 text-slate-600">
+                                <tr>
+                                    <td class="p-3 font-bold text-slate-800">1. Ketajaman Diagnosis Teoritis</td>
+                                    <td class="p-3 text-center font-extrabold text-net-700">35%</td>
+                                    <td class="p-3">Mampu membedah akar masalah kasus menggunakan minimal 4 prinsip spesifik teori Konektivisme (Siemens/Downes) secara akurat.</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-bold text-slate-800">2. Ketepatan Audit Struktur PLN</td>
+                                    <td class="p-3 text-center font-extrabold text-net-700">30%</td>
+                                    <td class="p-3">Mampu mengevaluasi kelemahan kasus berdasarkan 4 indikator ketepatan PLN (<em>Diversity, Bidirectional Flow, Filtering, Sustainability</em>).</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-bold text-slate-800">3. Konkretisasi Solusi & Peta PLN</td>
+                                    <td class="p-3 text-center font-extrabold text-net-700">35%</td>
+                                    <td class="p-3">Mampu menyusun rekomendasi peta struktur PLN baru (3 lapisan: <em>Human, Info/Tools, Exchange Space</em>) yang aplikatif dan sesuai konteks kasus.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Referensi Akademis -->
+                <div class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                    <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                        <i class="fa-solid fa-book-bookmark text-net-600"></i> Referensi Akademis Modul
+                    </h3>
+                    <ul class="space-y-3 text-xs text-slate-600 leading-relaxed">
+                        <li class="p-3 bg-slate-50 rounded-xl border border-slate-100">
+                            Downes, S. (2012). <em>Connectivism and Connective Knowledge: Essays on meaning and learning networks</em>. National Research Council Canada.
+                        </li>
+                        <li class="p-3 bg-slate-50 rounded-xl border border-slate-100">
+                            Siemens, G. (2005). Connectivism: A Learning Theory for the Digital Age. <em>International Journal of Instructional Technology and Distance Learning</em>, 2(1), 3–10.
+                        </li>
+                        <li class="p-3 bg-slate-50 rounded-xl border border-slate-100">
+                            Wheeler, S. (2015). <em>Learning with 'e's: Educational theory and practice in the digital age</em>. Crown House Publishing.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-500 mt-10">
+        <p>© 2026 Mata Kuliah Teori Belajar dan Pembelajaran • Topik: Konektivisme & Pemetaan Personal Learning Network (PLN)</p>
+    </footer>
+
+    <!-- Interactive Scripts -->
+    <script>
+        function navigateTab(tabId) {
+            document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.add('hidden'));
+            document.querySelectorAll('.nav-tab').forEach(btn => {
+                btn.classList.remove('tab-active');
+                btn.classList.add('text-slate-500', 'font-medium');
+            });
+
+            document.getElementById(tabId).classList.remove('hidden');
+            const activeTab = document.getElementById('tab-' + tabId);
+            activeTab.classList.add('tab-active');
+            activeTab.classList.remove('text-slate-500', 'font-medium');
+            window.scrollTo({ top: 180, behavior: 'smooth' });
+        }
+
+        function selectCase(caseNum) {
+            document.querySelectorAll('.case-panel').forEach(panel => panel.classList.add('hidden'));
+            document.querySelectorAll('.case-selector').forEach(btn => {
+                btn.classList.remove('bg-net-600', 'text-white');
+                btn.classList.add('text-slate-600');
+            });
+
+            document.getElementById('case-panel-' + caseNum).classList.remove('hidden');
+            const activeBtn = document.getElementById('case-btn-' + caseNum);
+            activeBtn.classList.add('bg-net-600', 'text-white');
+            activeBtn.classList.remove('text-slate-600');
+
+            // Sync dropdown in worksheet
+            document.getElementById('group-case').selectedIndex = caseNum - 1;
+        }
+
+        function exportCaseDraft() {
+            const groupName = document.getElementById('group-name').value || 'Kelompok_Belum_Diisi';
+            const groupCase = document.getElementById('group-case').value;
+            const notes = document.getElementById('group-notes').value;
+
+            if (!notes.trim()) {
+                alert('Silakan tuliskan draf analisis kelompok terlebih dahulu sebelum mengunduh.');
+                return;
+            }
+
+            const textContent = `========================================================\n` +
+                `LEMBAR ANALISIS STUDI KASUS: KONEKTIVISME & PEMETAAN PLN\n` +
+                `Mata Kuliah: Teori Belajar dan Pembelajaran\n` +
+                `========================================================\n\n` +
+                `Identitas Kelompok : ${groupName}\n` +
+                `Studi Kasus Pilihan: ${groupCase}\n\n` +
+                `--- HASIL ANALISIS & REKONSTRUKSI PETA PLN ---\n\n` +
+                `${notes}\n\n` +
+                `========================================================`;
+
+            const blob = new Blob([textContent], { type: 'text/plain;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `Analisis_PLN_${groupName.replace(/[^a-z0-9]/gi, '_')}.txt`;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>
